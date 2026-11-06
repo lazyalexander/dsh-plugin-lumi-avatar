@@ -20,3 +20,20 @@ test('actual completion returns UI state to idle and disposal clears ownership',
  await new Promise(resolve=>setTimeout(resolve,300));
  assert.equal(updates.at(-1).status,'idle');playback.dispose();assert.equal(calls.at(-1),'dispose');
 });
+test('mouth playback has a wall-clock ceiling even when renderer stays active',async()=>{
+ const {client,updates,calls}=setup();let now=0;
+ client.request=async()=>({state:'idle',speechActive:true});
+ const playback=new AvatarPlayback(client,value=>updates.push(value),error=>{throw error;},{now:()=>now});
+ await playback.play({...reply,reaction:{state:'idle',intensity:.2}});
+ now=30001;await new Promise(resolve=>setTimeout(resolve,300));
+ assert.ok(calls.includes('cancel'));assert.equal(updates.at(-1).status,'idle');playback.dispose();
+});
+test('body can return to idle while speech finishes, then playback ends once',async()=>{
+ const {playback,client,updates}=setup();let speechActive=true;
+ client.request=async()=>({state:'idle',speechActive});
+ await playback.play(reply);await new Promise(resolve=>setTimeout(resolve,300));
+ assert.equal(updates.at(-1).status,'playing');
+ speechActive=false;await new Promise(resolve=>setTimeout(resolve,300));
+ assert.equal(updates.at(-1).status,'idle');
+ assert.equal(updates.filter(u=>u.status==='playing').length,1);playback.dispose();
+});

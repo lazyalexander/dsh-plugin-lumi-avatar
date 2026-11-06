@@ -54,7 +54,8 @@ export class LumiAvatarClient {
     return this.request('react', {
       turn_id: turnId, command_id: commandId, text: text || '我在。',
       gesture: { name: state, intensity }, emotion: { name: state === 'idle' ? 'neutral' : state, intensity },
-      speak: !!text && state !== 'idle',
+      // A neutral body pose must not mute a spoken reply.
+      speak: typeof text === 'string' && !!text.trim(),
     });
   }
   cancel() { return this.request('cancel'); }
