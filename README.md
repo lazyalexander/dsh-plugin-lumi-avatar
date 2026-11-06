@@ -26,6 +26,20 @@ The renderer owns facial shapes, motions, interpolation, mouth movement, and rec
 
 This repository distributes plugin code under MIT. Character models, textures, motion recordings and private conversation data are supplied separately by the renderer operator. Dependency licenses remain with their respective authors.
 
+## Install a prebuilt release
+
+Download `dsh-plugin-lumi-avatar-0.3.5.tgz`, `lumi.overlay.yml`, and `SHA256SUMS` from [v0.3.5](https://github.com/lazyalexander/dsh-plugin-lumi-avatar/releases/tag/v0.3.5). Verify the downloaded files with `shasum -a 256 -c SHA256SUMS` on macOS. No build tools are needed for this path; DSH and its Node.js runtime are still required.
+
+Set `avatarUrl` in the overlay to your running renderer, then run these commands from the download directory:
+
+```sh
+dsh --profile lumi --from-default-profile web --help
+dsh plugin --profile lumi add "$PWD/dsh-plugin-lumi-avatar-0.3.5.tgz"
+dsh --profile lumi --patch "$PWD/lumi.overlay.yml"
+```
+
+This installs the plugin, not a bundled character renderer or model. Each operator supplies their own provider credentials through DSH and an authorized renderer. No shared API key is distributed.
+
 ## Build and install
 
 ```sh
@@ -41,7 +55,7 @@ Create a dedicated DSH profile and install the local package using its absolute 
 
 ```sh
 dsh --profile lumi --from-default-profile web --help
-dsh plugin --profile lumi add /absolute/path/to/dsh-plugin-lumi-avatar-0.3.4.tgz
+dsh plugin --profile lumi add /absolute/path/to/dsh-plugin-lumi-avatar-0.3.5.tgz
 ```
 
 Copy `lumi.overlay.yml` and set `config.avatarUrl` to your renderer's actual URL. Start the renderer, then run the profile with that overlay.
@@ -71,7 +85,7 @@ The `player` interface and message fields are documented in [renderer-protocol.m
 
 ## Behavior and privacy
 
-The plugin adds one static prompt section and the `lumi_react` tool schema to DSH's existing model context. Selecting a presentation usually adds a tool step before the final reply. The client sends at most the first 2,000 characters of the completed reply to the configured renderer for text-paced mouth animation. That renderer URL is a data destination chosen by the operator. The plugin performs no separate classification request and includes no provider credentials.
+The plugin adds static spoken-language persona and presentation prompt sections and the `lumi_react` tool schema to DSH's existing model context. Selecting a presentation usually adds a tool step before the final reply. The client sends at most the first 2,000 characters of the completed reply to the configured renderer for text-paced mouth animation. That renderer URL is a data destination chosen by the operator. The plugin performs no separate classification request and includes no provider credentials.
 
 Only successfully completed same-turn tool selections are consumed. Streaming fragments and interrupted replies are ignored. Opening historical conversations does not replay their old responses. New tasks, session switches and unloads invalidate previous playback ownership. The UI returns to idle after the renderer reports that both gesture and mouth activity have finished.
 
@@ -86,3 +100,5 @@ This public repository starts with a clean root commit containing an allowlisted
 [MIT](LICENSE). This community plugin is independently maintained and has no official affiliation with DeepSeek or Ubisoft.
 
 Lumi appears in the native right sidebar. The Lumi toolbar button reopens it after closing; wide windows open it automatically once per session, while narrow windows leave it collapsed.
+
+The persona uses warm, inclusive conversational paragraphs suitable for future speech playback. It avoids Markdown, emoji, stage directions and emotional pressure in chat replies. Prompt guidance does not replace host permissions or provider safeguards.

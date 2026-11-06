@@ -15,7 +15,7 @@ npm ci
 npm test
 npm pack
 dsh --profile lumi --from-default-profile web --help
-dsh plugin --profile lumi add /absolute/path/to/dsh-plugin-lumi-avatar-0.3.4.tgz
+dsh plugin --profile lumi add /absolute/path/to/dsh-plugin-lumi-avatar-0.3.5.tgz
 ```
 
 将 `lumi.overlay.yml` 中的 `avatarUrl` 改为实际播放器地址，先启动播放器，再启动 DSH。
@@ -41,3 +41,9 @@ dsh --profile lumi --patch /absolute/path/to/lumi.overlay.yml --no-open
 普通聊天默认平静说明；卖萌仅用于当前明确邀请，不延续到后续话题。笑话可选择 `laugh`，意外事件选择 `surprise`，重要说明和纠错选择 `serious`。
 
 Lumi 位于原生右侧栏，可通过对话顶部的 Lumi 按钮重新打开。宽窗口每个会话首次自动展开，窄窗口默认收起。
+
+## 安装现成包
+
+从 [v0.3.5 发布页](https://github.com/lazyalexander/dsh-plugin-lumi-avatar/releases/tag/v0.3.5) 下载安装包、lumi.overlay.yml 和 SHA256SUMS，无需自己构建。在下载目录用 `shasum -a 256 -c SHA256SUMS` 核验，然后按上文的 DSH 安装和启动命令操作。
+
+安装包只含插件与人格提示，不包含人物模型和渲染服务，也不带任何共享密钥。使用者自行配置 DSH 的模型服务，并在 overlay 中填写有权使用的人偶服务地址。
