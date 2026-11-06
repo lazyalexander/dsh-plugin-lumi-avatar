@@ -41,7 +41,7 @@ Create a dedicated DSH profile and install the local package using its absolute 
 
 ```sh
 dsh --profile lumi --from-default-profile web --help
-dsh plugin --profile lumi add /absolute/path/to/dsh-plugin-lumi-avatar-0.3.2.tgz
+dsh plugin --profile lumi add /absolute/path/to/dsh-plugin-lumi-avatar-0.3.4.tgz
 ```
 
 Copy `lumi.overlay.yml` and set `config.avatarUrl` to your renderer's actual URL. Start the renderer, then run the profile with that overlay.
@@ -84,3 +84,5 @@ This public repository starts with a clean root commit containing an allowlisted
 ## License
 
 [MIT](LICENSE). This community plugin is independently maintained and has no official affiliation with DeepSeek or Ubisoft.
+
+Lumi appears in the native right sidebar. The Lumi toolbar button reopens it after closing; wide windows open it automatically once per session, while narrow windows leave it collapsed.

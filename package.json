@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-lumi-avatar",
-  "version": "0.3.2",
+  "version": "0.3.4",
   "description": "Context-aware emotional avatar presentation for DeepSeek Harness",
   "type": "module",
   "license": "MIT",
@@ -46,7 +46,8 @@
         "@deepseek-ai/dsh-client-ui-conversation",
         "@deepseek-ai/dsh-client-ui-renderer",
         "@deepseek-ai/dsh-client-ui-session",
-        "@deepseek-ai/dsh-client-ui-chat"
+        "@deepseek-ai/dsh-client-ui-chat",
+        "@deepseek-ai/dsh-client-ui-sidebar-right"
       ]
     },
     "bundle": {

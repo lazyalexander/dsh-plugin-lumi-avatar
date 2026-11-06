@@ -15,7 +15,7 @@ npm ci
 npm test
 npm pack
 dsh --profile lumi --from-default-profile web --help
-dsh plugin --profile lumi add /absolute/path/to/dsh-plugin-lumi-avatar-0.3.2.tgz
+dsh plugin --profile lumi add /absolute/path/to/dsh-plugin-lumi-avatar-0.3.4.tgz
 ```
 
 将 `lumi.overlay.yml` 中的 `avatarUrl` 改为实际播放器地址，先启动播放器，再启动 DSH。
@@ -39,3 +39,5 @@ dsh --profile lumi --patch /absolute/path/to/lumi.overlay.yml --no-open
 运行 `npm test` 检查转录与播放生命周期，`npm run build` 生成 DSH 浏览器模块，`npm run check:release` 检查公开文件和打包清单。依赖保留各自许可。
 
 普通聊天默认平静说明；卖萌仅用于当前明确邀请，不延续到后续话题。笑话可选择 `laugh`，意外事件选择 `surprise`，重要说明和纠错选择 `serious`。
+
+Lumi 位于原生右侧栏，可通过对话顶部的 Lumi 按钮重新打开。宽窗口每个会话首次自动展开，窄窗口默认收起。

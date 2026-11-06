@@ -50,21 +50,47 @@ export function LumiDock({ sessionId, useSession, useConversation, avatarUrl }) 
   }, [ready, running, openState, latest]);
 
   return createElement('section', {
+    style: { display: 'flex', flexDirection: 'column', height: '100%', minHeight: 0 },
     'aria-label': 'Lumi 人偶', 'data-lumi-status': presentation.status,
     'data-lumi-state': presentation.state, 'data-lumi-reply': presentation.reply,
     'data-lumi-selected': String(presentation.selected),
   },
-  createElement('iframe', { ref: frame, title: 'Lumi', style: { width: '100%', height: '360px', border: 0 } }),
+  createElement('iframe', { ref: frame, title: 'Lumi', style: { width: '100%', height: '100%', minHeight: 0, flex: 1, border: 0, display: 'block' } }),
   error ? createElement('p', { role: 'status' }, error) : null);
 }
 
-export const inject = ['slots'];
+/** Session-scoped entry point; the native sidebar owns resizing and collapse. */
+export function LumiSidebarButton({ sessionId, openAvatar, autoOpened }) {
+  useEffect(() => {
+    if (autoOpened.has(sessionId) || !matchMedia('(min-width: 1100px)').matches) return;
+    autoOpened.add(sessionId);
+    openAvatar();
+  }, [sessionId, openAvatar, autoOpened]);
+  return createElement('button', {
+    type: 'button', onClick: openAvatar, title: '打开 Lumi 侧栏',
+    'aria-label': '打开 Lumi 侧栏',
+    style: { border: '1px solid #dce2ea', borderRadius: 8, padding: '5px 10px', background: 'transparent', color: 'inherit', cursor: 'pointer' },
+  }, 'Lumi');
+}
 
-/** Register Lumi in the active DSH conversation. */
+export const inject = ['slots', 'sidebarRightTabs', 'sidebarRight'];
+
+/** Register a native right sidebar page and its conversation toolbar entry. */
 export function apply(ctx, config = {}) {
   const avatarUrl = config.avatarUrl || 'http://127.0.0.1:8798/runtime/interaction/';
-  ctx.slots.inject('conversation.input.dock', () => ctx.slots.register({
-    name: 'conversation.input.dock', id: 'lumi-avatar', order: 30,
+  const autoOpened = new Set();
+  const openAvatar = () => ctx.sidebarRight.openTab('lumi-avatar');
+  ctx.effect(() => ctx.sidebarRightTabs.register({
+    id: 'lumi-avatar', kind: 'lumi-avatar', priority: 'builtin', title: () => 'Lumi',
+  }));
+  ctx.slots.inject('sidebar.right.pane.tab', () => ctx.slots.register({
+    name: 'sidebar.right.pane.tab', key: 'lumi-avatar',
     inject: () => ({ avatarUrl }),
   }, LumiDock));
+  for (const name of ['conversation.session.header.utilities', 'conversation.hero.options']) {
+    ctx.slots.inject(name, () => ctx.slots.register({
+      name, id: 'lumi-avatar', order: 30,
+      inject: () => ({ openAvatar, autoOpened }),
+    }, LumiSidebarButton));
+  }
 }
