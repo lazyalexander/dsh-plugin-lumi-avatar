@@ -1,4 +1,4 @@
-# Lumi Avatar for DeepSeek Harness
+# Lumi Companion for DeepSeek
 
 MIT-licensed plugin code for context-aware avatar responses in DeepSeek Harness (DSH). The model selects a bounded presentation inside its existing conversation turn. The client combines that selection with the completed reply and drives an avatar renderer through a private browser message channel.
 
@@ -28,13 +28,13 @@ This repository distributes plugin code under MIT. Character models, textures, m
 
 ## Install a prebuilt release
 
-Download `dsh-plugin-lumi-avatar-0.3.6.tgz`, `lumi.overlay.yml`, and `SHA256SUMS` from [v0.3.6](https://github.com/lazyalexander/dsh-plugin-lumi-avatar/releases/tag/v0.3.6). Verify the downloaded files with `shasum -a 256 -c SHA256SUMS` on macOS. No build tools are needed for this path; DSH and its Node.js runtime are still required.
+Download `dsh-plugin-lumi-avatar-0.3.7.tgz`, `lumi.overlay.yml`, and `SHA256SUMS` from [v0.3.7](https://github.com/lazyalexander/dsh-plugin-lumi-avatar/releases/tag/v0.3.7). Verify the downloaded files with `shasum -a 256 -c SHA256SUMS` on macOS. No build tools are needed for this path; DSH and its Node.js runtime are still required.
 
 Set `avatarUrl` in the overlay to your running renderer, then run these commands from the download directory:
 
 ```sh
 dsh --profile lumi --from-default-profile web --help
-dsh plugin --profile lumi add "$PWD/dsh-plugin-lumi-avatar-0.3.6.tgz"
+dsh plugin --profile lumi add "$PWD/dsh-plugin-lumi-avatar-0.3.7.tgz"
 dsh --profile lumi --patch "$PWD/lumi.overlay.yml"
 ```
 
@@ -55,7 +55,7 @@ Create a dedicated DSH profile and install the local package using its absolute 
 
 ```sh
 dsh --profile lumi --from-default-profile web --help
-dsh plugin --profile lumi add /absolute/path/to/dsh-plugin-lumi-avatar-0.3.6.tgz
+dsh plugin --profile lumi add /absolute/path/to/dsh-plugin-lumi-avatar-0.3.7.tgz
 ```
 
 Copy `lumi.overlay.yml` and set `config.avatarUrl` to your renderer's actual URL. Start the renderer, then run the profile with that overlay.
@@ -104,3 +104,5 @@ Lumi appears in the native right sidebar. The Lumi toolbar button reopens it aft
 The persona uses warm, inclusive conversational paragraphs suitable for future speech playback. It avoids Markdown, emoji, stage directions and emotional pressure in chat replies. Prompt guidance does not replace host permissions or provider safeguards.
 
 Reply mouth movement is independent of the body pose: an idle gesture no longer silences nonempty reply text. Playback waits for mouth completion as well as gesture completion, with a 30-second wall-clock failsafe for a stalled renderer.
+
+Character attribution and the separate complete-app release status are documented in [character-attribution.md](docs/character-attribution.md).

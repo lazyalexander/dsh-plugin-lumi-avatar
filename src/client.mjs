@@ -77,7 +77,7 @@ export const inject = ['slots', 'sidebarRightTabs', 'sidebarRight'];
 
 /** Register a native right sidebar page and its conversation toolbar entry. */
 export function apply(ctx, config = {}) {
-  const avatarUrl = config.avatarUrl || 'http://127.0.0.1:8798/runtime/interaction/';
+  const avatarUrl = config.avatarUrl || globalThis.__LUMI_AVATAR_URL__ || 'http://127.0.0.1:8798/runtime/interaction/';
   const autoOpened = new Set();
   const openAvatar = () => ctx.sidebarRight.openTab('lumi-avatar');
   ctx.effect(() => ctx.sidebarRightTabs.register({
