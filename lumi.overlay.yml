@@ -1,0 +1,5 @@
+- insert:
+    - id: lumi-avatar
+      name: dsh-plugin-lumi-avatar
+      config:
+        avatarUrl: http://127.0.0.1:8798/runtime/interaction/

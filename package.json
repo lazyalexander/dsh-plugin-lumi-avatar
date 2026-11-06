@@ -1,0 +1,72 @@
+{
+  "name": "dsh-plugin-lumi-avatar",
+  "version": "0.3.0",
+  "description": "Context-aware emotional avatar presentation for DeepSeek Harness",
+  "type": "module",
+  "license": "MIT",
+  "author": "lazyalexander",
+  "engines": {
+    "node": ">=24.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lazyalexander/dsh-plugin-lumi-avatar.git"
+  },
+  "homepage": "https://github.com/lazyalexander/dsh-plugin-lumi-avatar#readme",
+  "bugs": {
+    "url": "https://github.com/lazyalexander/dsh-plugin-lumi-avatar/issues"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "avatar",
+    "emotion",
+    "vrm"
+  ],
+  "main": "./src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./client": "./lib/client.js",
+    "./avatar-client": "./src/avatar-client.mjs",
+    "./renderer-bridge": "./src/renderer-bridge.mjs",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src/",
+    "lib/",
+    "lumi.overlay.yml",
+    "LICENSE",
+    "README.md",
+    "docs/"
+  ],
+  "dsh": {
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-ui-session",
+        "@deepseek-ai/dsh-client-ui-chat"
+      ]
+    },
+    "bundle": {
+      "patch": "./lumi.overlay.yml"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.1.0",
+    "react": "^18.2.0"
+  },
+  "dependencies": {
+    "@deepseek-ai/dsh-tools": "0.2.2-rc.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node --test test/*.test.mjs",
+    "prepack": "npm run build",
+    "check:release": "node scripts/check-release.mjs"
+  }
+}
