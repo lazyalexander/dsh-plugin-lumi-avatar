@@ -32,7 +32,7 @@ A `react` payload is a player command.
 }
 ```
 
-Supported gesture names are `explain`, `cute`, `joy`, `serious`, `surprise`, `idle`. Emotion names additionally accept `neutral` for resting. The receiving player must enforce finite numeric intensity, valid turn/command IDs, stale-turn rejection, deduplication and text limits. The adapter limits state names before submission, while the player owns command validation and pose execution.
+Supported gesture names are `explain`, `cute`, `joy`, `laugh`, `serious`, `surprise`, `idle`. Emotion names additionally accept `neutral` for resting. The receiving player must enforce finite numeric intensity, valid turn/command IDs, stale-turn rejection, deduplication and text limits. The adapter limits state names before submission, while the player owns command validation and pose execution.
 
 `respond` returns `{type: 'started', ...}` on acceptance. Duplicate and rejected receipts must not restart playback. `snapshot()` must include `state`, `gesture`, `emotion`, `command_id` and `speech: {active: boolean}`. `state: 'acting'` means a body reaction is active. After both body and speech finish, the state becomes `idle`. The adapter exposes this as `speechActive` to the parent. Snapshots are observations from the rendered player, so a newly accepted command can appear on a subsequent frame.
 

@@ -10,7 +10,8 @@ MIT-licensed plugin code for context-aware avatar responses in DeepSeek Harness 
 | --- | --- |
 | `explain` | Calm explanation with a relaxed face and small hand movements |
 | `cute` | Playful expression and a compact, friendly gesture |
-| `joy` | Delighted surprise and a smile |
+| `joy` | Happiness, congratulations and a smile |
+| `laugh` | Brief amused laughter with a smiling face |
 | `serious` | Attentive brows and restrained explanatory movement |
 | `surprise` | Widened eyes and a short surprised reaction |
 | `idle` | Resting expression and quiet standing |
@@ -40,7 +41,7 @@ Create a dedicated DSH profile and install the local package using its absolute 
 
 ```sh
 dsh --profile lumi --from-default-profile web --help
-dsh plugin --profile lumi add /absolute/path/to/dsh-plugin-lumi-avatar-0.3.0.tgz
+dsh plugin --profile lumi add /absolute/path/to/dsh-plugin-lumi-avatar-0.3.2.tgz
 ```
 
 Copy `lumi.overlay.yml` and set `config.avatarUrl` to your renderer's actual URL. Start the renderer, then run the profile with that overlay.
@@ -52,6 +53,8 @@ dsh --profile lumi --patch /absolute/path/to/lumi.overlay.yml --no-open
 The overlay explicitly enables the plugin. It also works with DSH installations that install a local package as a plain dependency. Avoid enabling the same entry twice if your profile already loads this package's bundle patch.
 
 On each normal final reply, DSH can call `lumi_react` with a state and intensity from 0 to 0.85. The same-turn successful tool result and completed text drive the avatar. Missing or failed selections use `idle`. Model compliance with the instruction to select a presentation can vary.
+
+Ordinary conversation defaults to `explain`. Cuteness requires a current explicit invitation and does not carry across topic changes. Jokes can select `laugh`, ambiguous unexpected events `surprise`, and careful corrections or important explanations `serious`.
 
 ## Connect your renderer
 
@@ -74,7 +77,7 @@ Only successfully completed same-turn tool selections are consumed. Streaming fr
 
 ## Verification and limits
 
-`npm test` covers reply correlation, failed or malformed selections, stale acknowledgements, and return to idle. The DSH Web integration was exercised in a private development environment across all six states, including facial weights and completed playback. Models and conversations from that environment are excluded from this repository. Desktop, remote renderer deployments and automatic renderer process management remain outside the verified scope.
+`npm test` covers reply correlation (including omitted tool-only assistant rows), failed or malformed selections, context changes, stale acknowledgements, and return to idle. The DSH Web integration was exercised in a private development environment across the initial six states, including facial weights and completed playback. Models and conversations from that environment are excluded from this repository. Desktop, remote renderer deployments and automatic renderer process management remain outside the verified scope.
 
 This public repository starts with a clean root commit containing an allowlisted code export. It has no ancestry from the earlier private character-production repository. No private session records, recordings, model archives or local launch configuration are imported.
 

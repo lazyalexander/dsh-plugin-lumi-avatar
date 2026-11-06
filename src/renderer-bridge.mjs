@@ -1,4 +1,4 @@
-const SAMPLE_STATES = ['explain', 'cute', 'joy', 'serious', 'surprise', 'idle'];
+const SAMPLE_STATES = ['explain', 'cute', 'joy', 'laugh', 'serious', 'surprise', 'idle'];
 
 /** Accept a single parent-owned port after checking the configured host origin. */
 export function connectAvatarEmbed(player) {

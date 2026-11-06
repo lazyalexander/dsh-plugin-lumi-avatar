@@ -25,3 +25,22 @@ test('streaming, interrupted and invalid selections cannot drive emotion',()=>{
  const interrupted=node(1,2,[{kind:'text',text:'打断'}]);interrupted.data.finalNode.interrupted=true;
  assert.equal(readPresentation(chat([interrupted])),null);
 });
+test('context can switch from cute to laugh, surprise, serious and ordinary explanation',()=>{
+ const nodes=[];
+ for(const [i,state] of ['cute','laugh','surprise','serious','explain'].entries()){
+  const callId=`selection-${i}`;
+  nodes.push(node(i+1,i*2,[{...selection(state),callId}]),
+   {kind:'tool-call',data:{root:{kind:'tool-result',name:'lumi_react',callId,isError:false}}},
+   node(i+1,i*2+1,[{kind:'text',text:`reply-${state}`}]))
+  const value=readPresentation(chat(nodes));
+  assert.equal(value.reaction.state,state);assert.equal(value.selected,true);
+ }
+});
+test('a successful root retains its turn selection when DSH omits the tool-only assistant row',()=>{
+ const root={kind:'tool-call',location:{kind:'step',step:{turn:7}},data:{root:{kind:'tool-result',name:'lumi_react',callId:'root-only',isError:false,call:{argsRaw:JSON.stringify({state:'serious',intensity:.5})}}}};
+ const reply=node(7,20,[{kind:'text',text:'认真纠错'}]);
+ assert.equal(readPresentation(chat([root,reply])).reaction.state,'serious');
+ assert.equal(readPresentation(chat([root,node(8,21,[{kind:'text',text:'下一轮'}])])).selected,false);
+ root.data.root.isError=true;
+ assert.equal(readPresentation(chat([root,reply])).selected,false);
+});

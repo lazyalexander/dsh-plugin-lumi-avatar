@@ -1,17 +1,24 @@
-const states = new Set(['explain', 'cute', 'joy', 'serious', 'surprise', 'idle']);
+const states = new Set(['explain', 'cute', 'joy', 'laugh', 'serious', 'surprise', 'idle']);
 
 /** Read a completed reply and its successfully executed same-turn presentation. */
 export function readPresentation(chat) {
   if (!chat) return null;
   const nodes = chat.order.slice(-80).map(key => chat.nodes.get(key));
   const succeeded = new Set();
+  const selections = new Map();
   for (const node of nodes) {
     const result = node?.data?.root;
     if (node?.kind === 'tool-call' && result?.kind === 'tool-result' && result.name === 'lumi_react' && result.isError === false) {
       succeeded.add(String(result.callId));
+      // DSH can omit an empty tool-only assistant row. The settled root still
+      // carries its original arguments and authoritative conversation location.
+      const turn = node.location?.step?.turn ?? node.location?.turn?.turn;
+      try {
+        const value = JSON.parse(result.call?.argsRaw);
+        if (Number.isInteger(turn) && states.has(value.state) && Number.isFinite(value.intensity) && value.intensity >= 0 && value.intensity <= .85) selections.set(turn, value);
+      } catch { /* Older projections use the paired assistant block below. */ }
     }
   }
-  const selections = new Map();
   let latest = null;
   for (const node of nodes) {
     const data = node?.data;
