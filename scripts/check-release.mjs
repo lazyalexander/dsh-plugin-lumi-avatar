@@ -11,7 +11,7 @@ const forbidden = [
   /[?&]token=[A-Za-z0-9_-]{16,}/,
   /Bearer\s+[A-Za-z0-9_.-]{20,}/,
 ];
-const allowedRoots = new Set(['src', 'lib', 'docs', 'test', 'scripts', '.github', 'renderer']);
+const allowedRoots = new Set(['src', 'lib', 'docs', 'test', 'scripts', '.github', 'renderer', 'market']);
 const allowedFiles = new Set(['ASSET-NOTICES.txt', 'LICENSE', 'README.md', 'package.json', 'package-lock.json', 'build.mjs', 'lumi.overlay.yml', '.gitignore']);
 const paths = [];
 async function collect(directory = '.') {
