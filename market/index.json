@@ -29,7 +29,7 @@
         "en": "Context-aware Lumi avatar in the conversation page: expressions, motions, and text-paced mouth animation with a bundled WebGL renderer. Noncommercial preview.",
         "zh": "出现在对话页的 Lumi 虚拟形象：表情、动作与随文本节奏的口型动画，内置 WebGL 渲染器。非商用预览版。"
       },
-      "icon": "./icon.svg",
+      "icon": "./icon.png",
       "author": "lazyalexander",
       "homepage": "https://github.com/lazyalexander/dsh-plugin-lumi-avatar#readme",
       "repository": {
