@@ -1,3 +1,5 @@
+[中文](renderer-protocol.zh-CN.md) | **English**
+
 # Renderer protocol v1
 
 The DSH client embeds `config.avatarUrl` in an iframe. The URL gains `embed=1` and `host_origin=<exact parent origin>`. A renderer must validate the configured parent origin and `event.source`. The parent validates the renderer's origin and window before transferring a channel.
@@ -39,3 +41,5 @@ Supported gesture names are `explain`, `cute`, `joy`, `laugh`, `serious`, `surpr
 `begin` carries `{turn_id}`. `cancel` has no payload. `snapshot` returns the limited observation above. The adapter rejects unknown message types and reports exceptions as request-scoped errors. The parent times commands out after five seconds and initialization after two minutes.
 
 The renderer owns animation blending, facial expression transitions, mouth timing, feet support and any collision treatment. The protocol carries bounded intent rather than bone transforms.
+
+[Back to README](../README.md)

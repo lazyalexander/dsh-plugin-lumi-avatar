@@ -1,11 +1,27 @@
+[中文](character-attribution.zh-CN.md) | **English**
+
 # Character attribution and distribution status
 
-Product name: Lumi Companion for DeepSeek. Independent community project, not an official DeepSeek character or product.
+Lumi Companion for DeepSeek is an independent community project, not an official DeepSeek character or product. Version 0.4.0 is a public noncommercial preview including the retained model and ten motion clips; it is no longer a code-only package.
 
-Illustration source: https://iphsiibl.github.io/deepseek-whale-girl-gallery/ . Original character: 上善无形「溟月」. Maid whale-girl derivative: ZipZipPipe. Character-sheet collection: TreapGoGo / community. Per-image authors and sources: https://github.com/Iphsiibl/deepseek-whale-girl-gallery/blob/main/ATTRIBUTION.md . Exact input images still need file-level matching.
+## Illustration
 
-Illustration-derived character work follows CC BY-NC-SA 4.0: https://creativecommons.org/licenses/by-nc-sa/4.0/ . Preserve credit, indicate modifications, use noncommercially and share adaptations under the same license. Lumi modifications include illustration-to-3D construction, hair and clothing adaptation, proportions, rigging and expressions. This does not change the license of independent software components.
+Original character: 上善无形「溟月」. Maid whale-girl derivative: ZipZipPipe. [Gallery](https://iphsiibl.github.io/deepseek-whale-girl-gallery/) · [Per-image attribution](https://github.com/Iphsiibl/deepseek-whale-girl-gallery/blob/main/ATTRIBUTION.md). Character-sheet collection: TreapGoGo / community; this collection credit is not a claim of authorship for every input image. Exact input-image matching remains incomplete.
 
-The current private character candidate also contains a Sour暄 / 幻象黑兔 head and DLP3D animations converted by Codemarchant/Rexclaw. Those components have independent provenance and require separate review; the illustration license is not a permission grant for them. MMD Gokuraku Jodo was a stress test and is not shipped with the candidate. The daily VRMA files are a separate source chain and retain their own attribution.
+Illustration-derived work follows [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/): attribution, noncommercial use, indication of changes, and ShareAlike for adaptations. Lumi modifications include 3D construction, facial proportions, hair and clothing, rigging, expressions and runtime adaptation.
 
-This repository and downloadable plugin package contain MIT plugin code only. A noncommercial Mac app preview is published separately at the provider’s request. Its release notes preserve the unresolved asset-license status. The provider states the supplied head has an MIT sharing license; the corresponding file has not been obtained, and conflicting original ReadMe terms remain included. The local Mac application candidate includes the mouth fix introduced in 0.3.6 and renderer-address propagation fixed in 0.3.7.
+## Head
+
+Source recorded in production: Sour暄 / 幻象黑兔, Sour式空_夏卉 FA361. The provider reports an MIT sharing license, but the corresponding file or page has not been obtained. The bundled original ReadMe allows editing and redistribution with both original and modifier readmes, and prohibits commercial, R18, political, religious, insulting and other specified uses. These records remain unreconciled. [Original ReadMe](../renderer/licenses/Sour-original-ReadMe.txt) is preserved unchanged; this summary does not replace it.
+
+## Motions
+
+DLP3D / S-Lab NTU, converted to VRMA by Codemarchant / Rexclaw. Repository MIT notices are retained; per-asset motion-database redistribution scope has not been independently established. See [motion sources](motion-sources.md). Gokuraku Jodo VMD and music are not distributed.
+
+## Publication and code
+
+The provider explicitly authorized public noncommercial preview distribution of the current model and motions on 2026-11-07. This does not replace underlying rightsholder permission or resolve license compatibility. Keep original credits and terms; check permissions before further redistribution or commercial use.
+
+Plugin code is [MIT](../LICENSE). Dependencies retain their own licenses. The complete package is not uniformly MIT. See [full asset notices](../ASSET-NOTICES.txt).
+
+[Back to README](../README.md)

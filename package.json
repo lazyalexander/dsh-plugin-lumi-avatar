@@ -70,6 +70,7 @@
     "build": "node build.mjs",
     "test": "node --test test/*.test.mjs",
     "prepack": "npm run build",
-    "check:release": "node scripts/check-release.mjs"
+    "check:release": "node scripts/check-release.mjs",
+    "check:docs": "node scripts/check-doc-links.mjs"
   }
 }

@@ -1,4 +1,8 @@
+**中文** | [English](install-macos.md)
+
 # 安装 Lumi Companion for DeepSeek（Mac）
+
+如需 DSH 原生插件，请先看[原生插件安装](README.zh-CN.md#安装)。本页仅介绍独立 Mac 应用。
 
 这是自带 DeepSeek Harness、Lumi 模型和运行环境的应用安装包。插件代码版本为 0.3.7。当前作为预览版提供。
 
