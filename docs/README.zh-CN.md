@@ -1,49 +1,63 @@
-# Lumi Avatar · DeepSeek Harness 情绪插件
+# Lumi Companion for DeepSeek
 
-此插件让 DSH 根据当前对话选择平静说明、卖萌、惊喜、严肃说明、吃惊或待机，再把同轮完成回复交给人偶播放器，同时表现身体动作和脸部情绪。
+DSH 原生对话人偶插件，内置原版 Lumi、表情、动作和渲染器。根据对话上下文作出反应，说话时显示口型。非商用预览版。
 
-插件代码使用 MIT 许可。模型、贴图和动作由使用者另行提供并确认使用权限。公开仓库以全新根提交导出插件代码，旧私有项目的历史、聊天、录屏和角色素材不会进入这个仓库。
+A native DSH companion plugin with the retained Lumi character, expressions, motions and a bundled renderer. Reacts to conversation context with text-paced mouth animation. Noncommercial preview.
 
-## 安装
+## 安装 / Install
 
-需要 Node.js >=24.9、DeepSeek Harness 0.2.2-rc.1 和支持本仓库协议的人偶播放器。
-
-```sh
-git clone https://github.com/lazyalexander/dsh-plugin-lumi-avatar.git
-cd dsh-plugin-lumi-avatar
-npm ci
-npm test
-npm pack
-dsh --profile lumi --from-default-profile web --help
-dsh plugin --profile lumi add /absolute/path/to/dsh-plugin-lumi-avatar-0.3.7.tgz
-```
-
-将 `lumi.overlay.yml` 中的 `avatarUrl` 改为实际播放器地址，先启动播放器，再启动 DSH。
+已有 DeepSeek Harness 后，在终端执行 / With DeepSeek Harness installed:
 
 ```sh
-dsh --profile lumi --patch /absolute/path/to/lumi.overlay.yml --no-open
+dsh plugin --profile web add github:lazyalexander/dsh-plugin-lumi-avatar
 ```
 
-浏览器加载当前会话后，DSH 模型在原有上下文中调用 `lumi_react` 选择表现。插件确认同轮工具成功执行后，发送完成回复和表现状态。调用失败或缺失时待机兜底。中断回复不播放，切换会话时释放旧连接，动作和文字口型结束后回到待机。
+然后重启该配置的 DSH / Then restart DSH with that profile:
 
-## 播放器
+```sh
+dsh --profile web
+```
 
-当前仓库交付插件代码和可嵌入的通信适配器。人偶外观、动画和形态键由独立播放器实现。播放器接口、消息格式和来源检查见 [协议](renderer-protocol.md)。通过 `avatarUrl` 可以接入已有本机 Lumi 播放器或自己的兼容实现。
+在对话页点击 **Lumi** 打开人物侧栏。使用现有 DSH 中配置的 DeepSeek，不需要 npm 账号、独立 Mac 应用或另开渲染服务。首次安装会下载人物资源，请等待完成。
 
-插件会向配置的播放器发送完成回复的前 2,000 字，用于按文字节奏驱动口型。请将此地址配置为你认可的服务。情绪选择与普通回复共用 DSH 现有推理，请求中包含插件提示与工具定义。模型仍可能漏调用表现工具，插件会回到待机。
+Click **Lumi** in the conversation page to open the avatar sidebar. Uses the DeepSeek configuration already in DSH. No npm account, standalone Mac app or separate renderer process required. First installation downloads character assets.
 
-已验证 DSH Web 的六种状态与播放恢复。桌面自定义协议、远程部署和自动管理播放器进程仍待验证。
+如果人物按钮未出现，将本仓库的 `lumi.overlay.yml` 保存到本机并运行：
+If the avatar button does not appear, save this repository's `lumi.overlay.yml` locally and run:
 
-## 开发
+```sh
+dsh --profile web --patch ./lumi.overlay.yml
+```
 
-运行 `npm test` 检查转录与播放生命周期，`npm run build` 生成 DSH 浏览器模块，`npm run check:release` 检查公开文件和打包清单。依赖保留各自许可。
+已有其他配置名时，将 `web` 换成你使用的名称。插件会在本机回环地址自动启动模型服务；退出 DSH 后停止。
+Replace `web` with your existing profile name if different. The plugin automatically serves the character on a loopback address and stops on DSH disposal.
 
-普通聊天默认平静说明；卖萌仅用于当前明确邀请，不延续到后续话题。笑话可选择 `laugh`，意外事件选择 `surprise`，重要说明和纠错选择 `serious`。
+## 要求与使用 / Requirements and usage
 
-Lumi 位于原生右侧栏，可通过对话顶部的 Lumi 按钮重新打开。宽窗口每个会话首次自动展开，窄窗口默认收起。
+- DeepSeek Harness 0.2.2-rc.1；其他版本待验证 / other versions unverified.
+- Node.js 24.9+、DSH 所需的 pnpm、支持 WebGL 的浏览器 / pnpm required by DSH and a WebGL-capable browser.
+- 可用的 DeepSeek 配置，API 费用由自己的账户承担 / working DeepSeek configuration; API usage is billed to your account.
 
-## 安装现成包
+支持平静说明、开心、大笑、严肃、吃惊、卖萌及待机。按本轮对话选择，支持衔接、打断和口型归零。没有语音合成或摄像头追踪。
+Supports explanation, joy, laughter, seriousness, surprise, cuteness and idle, with transitions, interruption and mouth reset. No TTS or camera tracking.
 
-从 [v0.3.7 发布页](https://github.com/lazyalexander/dsh-plugin-lumi-avatar/releases/tag/v0.3.7) 下载安装包、lumi.overlay.yml 和 SHA256SUMS，无需自己构建。在下载目录用 `shasum -a 256 -c SHA256SUMS` 核验，然后按上文的 DSH 安装和启动命令操作。
+原模型无损压缩保存，播放时自动解压。GitHub 安装使用预编译客户端，无需批准额外构建脚本。
+The original model is stored losslessly compressed and decoded while serving. GitHub installation uses the prebuilt client without an extra prepare build script.
 
-安装包只含插件与人格提示，不包含人物模型和渲染服务，也不带任何共享密钥。使用者自行配置 DSH 的模型服务，并在 overlay 中填写有权使用的人偶服务地址。
+## 署名与许可 / Credits and licensing
+
+**代码 MIT，整包不是统一 MIT。** 保留每项素材的原署名和许可。发布者已确认公开当前原版模型和动作，按非商用预览版分发；这不替代原权利人的授权。
+
+**Code is MIT; the complete package is not uniformly MIT.** Original asset credits and licenses are retained. The provider explicitly authorized this noncommercial preview containing the retained model and motions; that authorization does not replace underlying rightsholder grants.
+
+- 角色原型：上善无形「溟月」；女仆装二创：ZipZipPipe。[立绘来源](https://iphsiibl.github.io/deepseek-whale-girl-gallery/)；立绘衍生部分 CC BY-NC-SA 4.0，署名、非商用、衍生同协议。
+- Character: 上善无形 / 溟月; maid derivative: ZipZipPipe. Illustration-derived work: CC BY-NC-SA 4.0, attribution, noncommercial and ShareAlike.
+- 头部：Sour暄／幻象黑兔。提供者声明原分享协议 MIT，但对应文件尚未取得；随包原 ReadMe 的非商用及额外用途限制完整保留。两份授权记录尚未完全核对。
+- Head: Sour暄 / 幻象黑兔. The provider reports MIT sharing terms, but the corresponding file has not been obtained. Original ReadMe with noncommercial and additional use restrictions is retained; these records have not been fully reconciled.
+- 动作：DLP3D／S-Lab NTU；VRMA 转换：Codemarchant／Rexclaw。代码仓库 MIT 通知保留；动作数据库逐素材再分发范围尚未独立核清。未包含《极乐净土》VMD 或音乐。
+- Motions: DLP3D / S-Lab NTU, VRMA conversion by Codemarchant / Rexclaw. Repository MIT notices retained; per-asset motion redistribution scope has not been independently established. No Gokuraku Jodo VMD or music included.
+
+进一步转载、商用或纳入其他作品前，请核对各自原许可。独立社区项目，非 DeepSeek 官方产品。
+Check underlying terms before redistribution, commercial use or incorporation into another work. Independent community project, not an official DeepSeek product.
+
+[完整声明 / Full notices](ASSET-NOTICES.txt) · [通信协议 / Renderer protocol](docs/renderer-protocol.md)

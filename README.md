@@ -1,112 +1,63 @@
 # Lumi Companion for DeepSeek
 
-MIT-licensed plugin code for context-aware avatar responses in DeepSeek Harness (DSH). The model selects a bounded presentation inside its existing conversation turn. The client combines that selection with the completed reply and drives an avatar renderer through a private browser message channel.
+DSH 原生对话人偶插件，内置原版 Lumi、表情、动作和渲染器。根据对话上下文作出反应，说话时显示口型。非商用预览版。
 
-[中文](docs/README.zh-CN.md) · [Renderer protocol](docs/renderer-protocol.md)
+A native DSH companion plugin with the retained Lumi character, expressions, motions and a bundled renderer. Reacts to conversation context with text-paced mouth animation. Noncommercial preview.
 
-## Mac app preview
+## 安装 / Install
 
-For a bundled app with the retained Lumi character, download the [Mac preview release](https://github.com/lazyalexander/dsh-plugin-lumi-avatar/releases/tag/companion-macos-0.3.7-preview) and follow the [中文安装说明](docs/install-macos.zh-CN.md). Apple Silicon only; no separate Node.js or DSH installation required. The app includes separately licensed character/motion assets; it is not entirely MIT and asset-rights review remains incomplete.
-
-## Presentations
-
-| State | Intended expression and gesture |
-| --- | --- |
-| `explain` | Calm explanation with a relaxed face and small hand movements |
-| `cute` | Playful expression and a compact, friendly gesture |
-| `joy` | Happiness, congratulations and a smile |
-| `laugh` | Brief amused laughter with a smiling face |
-| `serious` | Attentive brows and restrained explanatory movement |
-| `surprise` | Widened eyes and a short surprised reaction |
-| `idle` | Resting expression and quiet standing |
-
-The renderer owns facial shapes, motions, interpolation, mouth movement, and recovery. The plugin owns contextual selection, reply correlation, cancellation, and session lifecycle.
-
-## Requirements
-
-- Node.js 24.9 or later.
-- DeepSeek Harness 0.2.2-rc.1. Its client APIs are pre-stable. Other versions need verification.
-- A running HTTP(S) avatar renderer implementing the [protocol](docs/renderer-protocol.md), with a character and animations you are authorized to use.
-
-This repository distributes plugin code under MIT. Character models, textures, motion recordings and private conversation data are supplied separately by the renderer operator. Dependency licenses remain with their respective authors.
-
-## Install a prebuilt release
-
-Download `dsh-plugin-lumi-avatar-0.3.7.tgz`, `lumi.overlay.yml`, and `SHA256SUMS` from [v0.3.7](https://github.com/lazyalexander/dsh-plugin-lumi-avatar/releases/tag/v0.3.7). Verify the downloaded files with `shasum -a 256 -c SHA256SUMS` on macOS. No build tools are needed for this path; DSH and its Node.js runtime are still required.
-
-Set `avatarUrl` in the overlay to your running renderer, then run these commands from the download directory:
+已有 DeepSeek Harness 后，在终端执行 / With DeepSeek Harness installed:
 
 ```sh
-dsh --profile lumi --from-default-profile web --help
-dsh plugin --profile lumi add "$PWD/dsh-plugin-lumi-avatar-0.3.7.tgz"
-dsh --profile lumi --patch "$PWD/lumi.overlay.yml"
+dsh plugin --profile web add github:lazyalexander/dsh-plugin-lumi-avatar
 ```
 
-This installs the plugin, not a bundled character renderer or model. Each operator supplies their own provider credentials through DSH and an authorized renderer. No shared API key is distributed.
-
-## Build and install
+然后重启该配置的 DSH / Then restart DSH with that profile:
 
 ```sh
-git clone https://github.com/lazyalexander/dsh-plugin-lumi-avatar.git
-cd dsh-plugin-lumi-avatar
-npm ci
-npm test
-npm run build
-npm pack
+dsh --profile web
 ```
 
-Create a dedicated DSH profile and install the local package using its absolute path.
+在对话页点击 **Lumi** 打开人物侧栏。使用现有 DSH 中配置的 DeepSeek，不需要 npm 账号、独立 Mac 应用或另开渲染服务。首次安装会下载人物资源，请等待完成。
+
+Click **Lumi** in the conversation page to open the avatar sidebar. Uses the DeepSeek configuration already in DSH. No npm account, standalone Mac app or separate renderer process required. First installation downloads character assets.
+
+如果人物按钮未出现，将本仓库的 `lumi.overlay.yml` 保存到本机并运行：
+If the avatar button does not appear, save this repository's `lumi.overlay.yml` locally and run:
 
 ```sh
-dsh --profile lumi --from-default-profile web --help
-dsh plugin --profile lumi add /absolute/path/to/dsh-plugin-lumi-avatar-0.3.7.tgz
+dsh --profile web --patch ./lumi.overlay.yml
 ```
 
-Copy `lumi.overlay.yml` and set `config.avatarUrl` to your renderer's actual URL. Start the renderer, then run the profile with that overlay.
+已有其他配置名时，将 `web` 换成你使用的名称。插件会在本机回环地址自动启动模型服务；退出 DSH 后停止。
+Replace `web` with your existing profile name if different. The plugin automatically serves the character on a loopback address and stops on DSH disposal.
 
-```sh
-dsh --profile lumi --patch /absolute/path/to/lumi.overlay.yml --no-open
-```
+## 要求与使用 / Requirements and usage
 
-The overlay explicitly enables the plugin. It also works with DSH installations that install a local package as a plain dependency. Avoid enabling the same entry twice if your profile already loads this package's bundle patch.
+- DeepSeek Harness 0.2.2-rc.1；其他版本待验证 / other versions unverified.
+- Node.js 24.9+、DSH 所需的 pnpm、支持 WebGL 的浏览器 / pnpm required by DSH and a WebGL-capable browser.
+- 可用的 DeepSeek 配置，API 费用由自己的账户承担 / working DeepSeek configuration; API usage is billed to your account.
 
-On each normal final reply, DSH can call `lumi_react` with a state and intensity from 0 to 0.85. The same-turn successful tool result and completed text drive the avatar. Missing or failed selections use `idle`. Model compliance with the instruction to select a presentation can vary.
+支持平静说明、开心、大笑、严肃、吃惊、卖萌及待机。按本轮对话选择，支持衔接、打断和口型归零。没有语音合成或摄像头追踪。
+Supports explanation, joy, laughter, seriousness, surprise, cuteness and idle, with transitions, interruption and mouth reset. No TTS or camera tracking.
 
-Ordinary conversation defaults to `explain`. Cuteness requires a current explicit invitation and does not carry across topic changes. Jokes can select `laugh`, ambiguous unexpected events `surprise`, and careful corrections or important explanations `serious`.
+原模型无损压缩保存，播放时自动解压。GitHub 安装使用预编译客户端，无需批准额外构建脚本。
+The original model is stored losslessly compressed and decoded while serving. GitHub installation uses the prebuilt client without an extra prepare build script.
 
-## Connect your renderer
+## 署名与许可 / Credits and licensing
 
-The renderer can import the provided adapter into its browser entry point.
+**代码 MIT，整包不是统一 MIT。** 保留每项素材的原署名和许可。发布者已确认公开当前原版模型和动作，按非商用预览版分发；这不替代原权利人的授权。
 
-```js
-import { connectAvatarEmbed } from 'dsh-plugin-lumi-avatar/renderer-bridge';
+**Code is MIT; the complete package is not uniformly MIT.** Original asset credits and licenses are retained. The provider explicitly authorized this noncommercial preview containing the retained model and motions; that authorization does not replace underlying rightsholder grants.
 
-// Call after the model and player are ready.
-const dispose = connectAvatarEmbed(player);
-```
+- 角色原型：上善无形「溟月」；女仆装二创：ZipZipPipe。[立绘来源](https://iphsiibl.github.io/deepseek-whale-girl-gallery/)；立绘衍生部分 CC BY-NC-SA 4.0，署名、非商用、衍生同协议。
+- Character: 上善无形 / 溟月; maid derivative: ZipZipPipe. Illustration-derived work: CC BY-NC-SA 4.0, attribution, noncommercial and ShareAlike.
+- 头部：Sour暄／幻象黑兔。提供者声明原分享协议 MIT，但对应文件尚未取得；随包原 ReadMe 的非商用及额外用途限制完整保留。两份授权记录尚未完全核对。
+- Head: Sour暄 / 幻象黑兔. The provider reports MIT sharing terms, but the corresponding file has not been obtained. Original ReadMe with noncommercial and additional use restrictions is retained; these records have not been fully reconciled.
+- 动作：DLP3D／S-Lab NTU；VRMA 转换：Codemarchant／Rexclaw。代码仓库 MIT 通知保留；动作数据库逐素材再分发范围尚未独立核清。未包含《极乐净土》VMD 或音乐。
+- Motions: DLP3D / S-Lab NTU, VRMA conversion by Codemarchant / Rexclaw. Repository MIT notices retained; per-asset motion redistribution scope has not been independently established. No Gokuraku Jodo VMD or music included.
 
-The `player` interface and message fields are documented in [renderer-protocol.md](docs/renderer-protocol.md). The player must implement the listed states. Use `dispose()` when unloading the renderer. Renderers and plugins must run with compatible HTTP(S) origins. DSH Desktop custom protocol origins still need validation.
+进一步转载、商用或纳入其他作品前，请核对各自原许可。独立社区项目，非 DeepSeek 官方产品。
+Check underlying terms before redistribution, commercial use or incorporation into another work. Independent community project, not an official DeepSeek product.
 
-## Behavior and privacy
-
-The plugin adds static spoken-language persona and presentation prompt sections and the `lumi_react` tool schema to DSH's existing model context. Selecting a presentation usually adds a tool step before the final reply. The client sends at most the first 2,000 characters of the completed reply to the configured renderer for text-paced mouth animation. That renderer URL is a data destination chosen by the operator. The plugin performs no separate classification request and includes no provider credentials.
-
-Only successfully completed same-turn tool selections are consumed. Streaming fragments and interrupted replies are ignored. Opening historical conversations does not replay their old responses. New tasks, session switches and unloads invalidate previous playback ownership. The UI returns to idle after the renderer reports that both gesture and mouth activity have finished.
-
-## Verification and limits
-
-`npm test` covers reply correlation (including omitted tool-only assistant rows), failed or malformed selections, context changes, stale acknowledgements, and return to idle. The DSH Web integration was exercised in a private development environment across the initial six states, including facial weights and completed playback. Models and conversations from that environment are excluded from this repository. Desktop, remote renderer deployments and automatic renderer process management remain outside the verified scope.
-
-This public repository starts with a clean root commit containing an allowlisted code export. It has no ancestry from the earlier private character-production repository. No private session records, recordings, model archives or local launch configuration are imported.
-
-## License
-
-[MIT](LICENSE). This community plugin is independently maintained and has no official affiliation with DeepSeek or Ubisoft.
-
-Lumi appears in the native right sidebar. The Lumi toolbar button reopens it after closing; wide windows open it automatically once per session, while narrow windows leave it collapsed.
-
-The persona uses warm, inclusive conversational paragraphs suitable for future speech playback. It avoids Markdown, emoji, stage directions and emotional pressure in chat replies. Prompt guidance does not replace host permissions or provider safeguards.
-
-Reply mouth movement is independent of the body pose: an idle gesture no longer silences nonempty reply text. Playback waits for mouth completion as well as gesture completion, with a 30-second wall-clock failsafe for a stalled renderer.
-
-Character attribution and the separate complete-app release status are documented in [character-attribution.md](docs/character-attribution.md).
+[完整声明 / Full notices](ASSET-NOTICES.txt) · [通信协议 / Renderer protocol](docs/renderer-protocol.md)

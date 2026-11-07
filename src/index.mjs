@@ -1,4 +1,5 @@
 import { defineTool } from '@deepseek-ai/dsh-tools';
+import { startBundledRenderer } from './bundled-renderer.mjs';
 import { LUMI_PERSONA } from './persona.mjs';
 
 const states = ['explain', 'cute', 'joy', 'laugh', 'serious', 'surprise', 'idle'];
@@ -6,10 +7,12 @@ export const inject = ['tools', 'systemPrompt'];
 
 /** Choose presentation inside DSH's existing model turn, using the same conversation context. */
 export function apply(ctx, config = {}) {
-  const avatarUrl = new URL(config.avatarUrl || 'http://127.0.0.1:8798/runtime/interaction/');
+  const bundled = config.avatarUrl ? null : startBundledRenderer();
+  if (bundled) ctx.on('dispose', () => bundled.close());
+  const avatarUrl = new URL(config.avatarUrl || 'http://127.0.0.1/');
   if (!['http:', 'https:'].includes(avatarUrl.protocol)) throw Error('Use an HTTP avatar URL');
   ctx.on('webserver/index-inject', table => {
-    table.push({ kind: 'global', name: '__LUMI_AVATAR_URL__', value: avatarUrl.href });
+    table.push({ kind: 'global', name: '__LUMI_AVATAR_URL__', value: bundled ? bundled.url() : avatarUrl.href });
   });
   ctx.systemPrompt.section({ name: 'lumi:persona', order: 850, text: LUMI_PERSONA });
   ctx.systemPrompt.section({

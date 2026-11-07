@@ -1,0 +1,18 @@
+Lumi Companion for DeepSeek — 本地审核候选
+角色原型：上善无形「溟月」。女仆装鲸鱼娘二创：ZipZipPipe。
+参考图来源：https://iphsiibl.github.io/deepseek-whale-girl-gallery/
+逐图署名：https://github.com/Iphsiibl/deepseek-whale-girl-gallery/blob/main/ATTRIBUTION.md
+三视图整理：TreapGoGo / 社区维护。具体输入图片与图集中条目的逐字节对应仍待确认。
+立绘衍生部分：CC BY-NC-SA 4.0，https://creativecommons.org/licenses/by-nc-sa/4.0/
+Lumi 项目改动：立绘转3D，服饰、发型、身体比例、绑定、表情与交互适配。禁商用、保留署名、衍生同协议。
+头模部件：Sour暄；原画：幻象黑兔。适用原 ReadMe 单独条件，不得将其改标为 CC 或 MIT。
+动作：DLP3D / S-Lab NTU；VRMA 转换 Codemarchant / Rexclaw；Lumi 项目进行重定向、节奏、接触、站立和过渡打磨。各段上游授权链待核清。
+《极乐净土》VMD：仅压力测试；本安装包不包含该 VMD 或舞曲。
+代码：Lumi 插件、DSH、three.js 与 three-vrm 各依原有代码许可；保留随包声明。
+独立社区项目，不代表 DeepSeek 官方。
+本候选包含尚未完成分发许可核查的头模与动作，仅供当前本机审核，尚不可作为公开完整发行版。
+
+2026-11-06 用户补充：提供的头模原分享协议为 MIT；目前尚未提供对应 LICENSE 或页面，记录为提供者授权声明，随素材保留原 ReadMe，不删除冲突条款。插件代码 MIT 不代表立绘与动作统一改为 MIT。
+
+2026-11-07: 提供者明确授权将当前原版模型与动作一起公开，保留原署名及原许可，以非商用预览版发布。这不替代原权利人的许可；上述许可核查状态仍然保留。
+2026-11-07: Provider explicitly authorized public noncommercial preview distribution of the retained model and motions with original credits and terms preserved. This statement does not replace underlying rightsholder permission; unresolved provenance disclosures above still apply.

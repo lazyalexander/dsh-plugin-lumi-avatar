@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:,">
+<title>Lumi · 和我聊聊</title>
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;color:#33445e;background:#f5f7fb}*{box-sizing:border-box}body{margin:0}canvas{display:block}#stage{position:fixed;inset:0 380px 0 0}aside{position:fixed;right:0;top:0;bottom:0;width:380px;padding:26px 24px;background:#fff;border-left:1px solid #e2e7f0;display:flex;flex-direction:column;gap:15px}h1{font-size:27px;font-weight:600;margin:0 0 5px}p{margin:0;line-height:1.7;font-size:14px;color:#6c7c92}.badge{font-size:11px;color:#6b7da2;letter-spacing:.12em}.heading{display:flex;justify-content:space-between;align-items:center}#providerStatus{font-size:11px;color:#8993a5}#providerStatus[data-ready=true]{color:#528078}#status{position:absolute;top:24px;left:26px;font-size:13px;color:#718199}.buttons{display:flex;gap:8px;flex-wrap:wrap}button{cursor:pointer;color:#40567b;background:#edf2fb;border:1px solid #dce4f0;border-radius:10px;padding:9px 13px;font:inherit;font-size:13px}button:hover{background:#dfe9fb}button:disabled{opacity:.45;cursor:default}button.primary{background:#526ba0;color:white;border-color:#526ba0}button[aria-pressed=true]{background:#526ba0;color:#fff}#dialogue{flex:1;min-height:130px;overflow-y:auto;display:flex;flex-direction:column;gap:14px;padding:6px 3px;scroll-behavior:smooth}.bubble{border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.75;background:#f0f4fa;white-space:pre-wrap;overflow-wrap:anywhere}.bubble.user{color:#64748b;background:#f8f8fb;margin-left:20px}.label{font-size:10px;margin-bottom:4px;color:#8c9bb0}.thinking{font-size:12px;padding-left:14px}form{display:flex;gap:8px;align-items:stretch}textarea{resize:none;flex:1;min-width:0;border:1px solid #dbe2ec;border-radius:10px;padding:11px;font:inherit;font-size:14px;outline:none;line-height:1.6}textarea:focus{border-color:#7c94be}form button{flex-shrink:0;white-space:nowrap}#chatError{font-size:12px;color:#936c52;line-height:1.6}.toolbar{display:flex;justify-content:space-between;gap:6px}.toolbar button{font-size:12px;padding:7px 10px;background:#fafbfd}.foot{font-size:11px;line-height:1.7;color:#97a3b5}.moods{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:10px}.moods button{padding:8px 5px;font-size:12px}summary{font-size:12px;color:#8491a6;cursor:pointer}#previewNote{font-size:11px;margin-top:8px}details{border-top:1px solid #edf0f6;padding-top:12px}
+.fileButton{display:inline-flex;align-items:center;cursor:pointer;font-size:12px;border:1px solid #dce4f0;border-radius:10px;padding:8px;color:#40567b;background:#edf2fb}.fileButton input{position:absolute;width:1px;height:1px;opacity:0}.fileButton:focus-within{outline:2px solid #526ba0}#capturePanel .buttons{margin:9px 0}#captureStatus,.captureHelp{font-size:11px;line-height:1.6;margin-top:8px}#captureVideo{width:100%;max-height:190px;object-fit:contain;background:#edf2fb;border-radius:10px}#captureVideo.mirror{transform:scaleX(-1)}
+@media(max-width:760px){#stage{right:0;bottom:46vh}aside{top:auto;height:46vh;width:100%;padding:14px 18px;gap:8px}h1{font-size:20px}.heading+p,details,.foot{display:none}#dialogue{min-height:60px}.bubble{padding:8px 11px}textarea{padding:7px}.toolbar button{padding:5px 9px}}
+</style>
+<div id="stage"><div id="status">正在准备 Lumi…</div></div>
+<aside style="overflow-y:auto">
+  <div><div class="badge">LUMI</div><div class="heading"><h1>和我聊聊</h1><span id="providerStatus">正在连接…</span></div><p>今天有什么事，让你一直惦记着？</p></div>
+  <div id="dialogue" role="log" aria-live="polite"><div class="bubble"><div class="label">Lumi</div><span id="reply">我在，慢慢说。</span></div></div>
+  <p id="chatError" role="status" hidden></p>
+  <form id="textForm"><textarea id="textInput" rows="2" maxlength="2000" placeholder="想说什么都可以…" aria-label="给 Lumi 的消息" disabled></textarea><button id="send" type="submit" class="primary" disabled>发送</button></form>
+  <div class="toolbar"><div class="buttons"><button id="interrupt">打断</button><button id="newChat">新对话</button></div><div class="buttons"><button id="full">全身</button><button id="upper">近一点</button></div></div>
+  <div class="buttons" aria-label="观看角度"><button id="level" aria-pressed="false">平视</button><button id="gentle" aria-pressed="true">微俯视</button></div>
+  <details><summary>看看她的反应</summary><div class="moods"><button data-gesture="explain">平静说明</button><button data-gesture="cute">卖萌</button><button data-gesture="joy">惊喜</button><button data-gesture="serious">严肃说明</button><button data-gesture="surprise">吃惊</button><button data-gesture="idle">待机</button></div><p id="previewNote">动作预览不会加入聊天记录。</p></details>
+  <details id="capturePanel"><summary>录一段自己的动作</summary>
+    <p class="captureHelp">双肩和双手入镜，面向镜头。录上半身与手指，双脚保持站稳；最多 2 分钟。</p>
+    <div class="buttons"><button id="captureCamera">打开摄像头</button><label class="fileButton">选择视频<input id="captureFile" type="file" accept="video/*"></label></div>
+    <video id="captureVideo" muted playsinline hidden></video>
+    <div class="buttons"><button id="captureRecord" disabled>开始录制</button><button id="captureStop">停止</button><button id="capturePlay" disabled>回放</button><button id="captureSave" disabled>保存动作</button><label class="fileButton">载入动作<input id="captureLoad" type="file" accept=".json,application/json"></label></div>
+    <p id="captureStatus" role="status">视频和摄像头画面在本机处理，不发送给 DeepSeek。导出文件只含动作。</p>
+  </details>
+  <p class="foot">文字口型 · 暂无语音<br>消息会发送给 DeepSeek；本机保留当前会话，点“新对话”即可清空。</p>
+</aside>
+<script type="importmap">{"imports":{"three":"/vendor/three/build/three.module.js","three/addons/":"/vendor/three/examples/jsm/","@pixiv/three-vrm":"/vendor/three-vrm/lib/three-vrm.module.js"}}</script><script type="module" src="viewer.js"></script>
+</html>
