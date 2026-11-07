@@ -47,6 +47,15 @@
       },
       "versions": [
         {
+          "version": "0.4.2",
+          "publishTimestamp": 1794040862,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/lazyalexander/dsh-plugin-lumi-avatar",
+            "commit": "84a008090762489958235a835b5b69407ec1cb90"
+          }
+        },
+        {
           "version": "0.4.1",
           "publishTimestamp": 1794039937,
           "source": {
