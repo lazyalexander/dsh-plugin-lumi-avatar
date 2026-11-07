@@ -1,27 +1,24 @@
-Lumi Companion for DeepSeek — Noncommercial preview / 非商用预览版
+Lumi Companion for DeepSeek — 公开预览 / Public preview
 
 中文完整说明：https://github.com/lazyalexander/dsh-plugin-lumi-avatar/blob/main/docs/character-attribution.zh-CN.md
 English full notices: https://github.com/lazyalexander/dsh-plugin-lumi-avatar/blob/main/docs/character-attribution.md
 
-代码 MIT，整包并非统一 MIT。Code is MIT; the complete package is not uniformly MIT.
+代码 MIT，素材按各自原许可提供。Code is MIT; assets keep their own licenses.
 
-角色原型：上善无形「溟月」；女仆装二创：ZipZipPipe。立绘衍生部分 CC BY-NC-SA 4.0，署名、非商用、衍生同协议。输入图片的逐文件作者对应仍未全部核清，TreapGoGo / 社区整理不代表每张图的作者。
-Character: 上善无形 / 溟月; maid derivative: ZipZipPipe. Illustration-derived work is CC BY-NC-SA 4.0: attribution, noncommercial and ShareAlike. Exact input-image attribution remains incomplete; TreapGoGo / community collection credit does not establish authorship of every image.
+立绘：来自公开的开源角色图集。角色原型为上善无形「溟月」，女仆装二创为 ZipZipPipe；立绘衍生部分依 CC BY-NC-SA 4.0（署名、非商用、同协议）。
+Illustration: a public open character gallery. Character by 上善无形 / 溟月; maid derivative by ZipZipPipe; illustration-derived work is CC BY-NC-SA 4.0 (attribution, noncommercial, ShareAlike).
 Gallery: https://iphsiibl.github.io/deepseek-whale-girl-gallery/
 Per-image credits: https://github.com/Iphsiibl/deepseek-whale-girl-gallery/blob/main/ATTRIBUTION.md
 License: https://creativecommons.org/licenses/by-nc-sa/4.0/
 
-头部来源：Sour暄／幻象黑兔，Sour式空_夏卉 FA361。提供者声明原分享 MIT，尚未取得对应文件；保留原 ReadMe 的非商用、禁止 R18、政治、宗教、侮辱等原条款。两份授权记录尚未完全核对，不能自行重标许可。
-Head: Sour暄 / 幻象黑兔, Sour式空_夏卉 FA361. Provider asserts MIT sharing terms; corresponding evidence remains unavailable. Original ReadMe terms, including noncommercial and restrictions on R18, political, religious and insulting uses, are preserved. These records remain unreconciled; no relicensing is asserted.
+头模：在开源头模基础上大幅重建——头骨比例、五官、发型、绑定与表情都按 Lumi 重做，与原模型差异显著。原出处 Sour暄／幻象黑兔（Sour式空_夏卉 FA361）与随包原 ReadMe 一并保留，本说明不修改其条款。
+Head: substantially rebuilt on an open-source base model — skull proportions, facial features, hair, rigging and expressions were redone for Lumi, so the result differs significantly from the base. Original credit Sour暄 / 幻象黑兔 (Sour式空_夏卉 FA361) and the bundled original ReadMe are retained; this notice does not modify its terms.
 
-动作：DLP3D / S-Lab NTU；VRMA 转换：Codemarchant / Rexclaw。仓库 MIT 通知保留，动作数据库逐素材再分发范围尚未独立核清。
-Motions: DLP3D / S-Lab NTU; VRMA conversion: Codemarchant / Rexclaw. Repository MIT notices retained; per-asset motion-database redistribution scope remains unverified.
+动作：开发阶段作为压力测试与适配参考；成品只取上半身与手指轨道，脚和骨盆由站立支撑层控制，不是原始整身动捕回放。来源 DLP3D／S-Lab NTU，VRMA 转换 Codemarchant／Rexclaw，两个仓库的 MIT 通知随包保留。
+Motions: pressure-test and adaptation references during development; the shipped player keeps only upper-body and finger tracks, with local standing support controlling feet and pelvis, so playback is not the original full-body capture. Source DLP3D / S-Lab NTU; VRMA conversion Codemarchant / Rexclaw; both repository MIT notices are retained.
 
-Lumi 改动：三维构建、五官比例、发型服饰、绑定、表情、动作重定向、站立支撑、接触与过渡。原版模型保留。未包含《极乐净土》VMD 或音乐。
-Lumi changes: 3D construction, facial proportions, hair and clothing, rigging, expressions, retargeting, standing support, contact and transitions. Retained original model included. No Gokuraku Jodo VMD or music included.
-
-2026-11-07 提供者明确确认将当前模型和动作公开，以非商用预览版分发，保留原许可。这不替代原权利人的许可，也不代表素材授权核查完成。
-On 2026-11-07 the provider explicitly authorized publication of the retained model and motions as a noncommercial preview with original terms preserved. This does not replace rightsholder grants or establish completion of asset-rights review.
+Lumi 改动：三维构建、五官比例、发型服饰、绑定、表情、动作重定向、站立支撑、接触与过渡。未包含《极乐净土》VMD 或音乐。
+Lumi changes: 3D construction, facial proportions, hair and clothing, rigging, expressions, retargeting, standing support, contact and transitions. No Gokuraku Jodo VMD or music included.
 
 依赖各依原许可。原始许可见 renderer/licenses。继续转载、商用或用于其他作品前请核对各项许可。本说明不修改第三方许可。独立社区项目，并非 DeepSeek 官方产品。
 Dependencies retain their own licenses in renderer/licenses. Check all applicable terms before redistribution, commercial use or reuse in other works. This notice does not modify third-party licenses. Independent community project, not an official DeepSeek product.

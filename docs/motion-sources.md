@@ -21,6 +21,6 @@ Original VRMA bytes are retained. The player uses upper-body and finger tracks w
 
 Anger uses a 0–4.2 second window within a 4.6 second reaction; cuteness uses approximately 4.33 seconds within a 4.4 second reaction. The player handles fades, transitions and interruption. Current source code is authoritative for settings.
 
-These ten clips were not recorded by this project; their original production method was not independently verified. Both repository MIT notices are retained, but do not independently establish the complete rights chain for every original motion asset. The provider authorized noncommercial preview publication; per-asset permissions remain under review. No Gokuraku Jodo VMD, music, upstream characters or voices are included.
+These ten clips served as pressure-test and adaptation references during development. The shipped player keeps only upper-body and finger tracks, with local standing support controlling feet and pelvis, so playback is not the original full-body capture. Both repository MIT notices are retained. No Gokuraku Jodo VMD, music, upstream characters or voices are included.
 
 [DLP3D license](../renderer/licenses/dlp3d-code.txt) · [Rexclaw license](../renderer/licenses/motion-source.txt) · [Character licensing](character-attribution.md) · [README](../README.md)

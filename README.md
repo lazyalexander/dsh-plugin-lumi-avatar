@@ -2,7 +2,7 @@
 
 # Lumi Companion for DeepSeek
 
-A native DSH companion plugin with the retained Lumi character, expressions, motions and a bundled renderer. Reacts to conversation context with text-paced mouth animation. Noncommercial preview.
+A native DSH companion plugin with the retained Lumi character, expressions, motions and a bundled renderer. Reacts to conversation context with text-paced mouth animation. Code MIT; character art CC BY-NC-SA 4.0.
 
 ## Install
 
@@ -50,11 +50,13 @@ The original model is stored losslessly compressed and decoded while serving. Gi
 
 ## Credits and licensing
 
-**Code is MIT; the complete package is not uniformly MIT.** Original asset credits and licenses are retained. The provider explicitly authorized this noncommercial preview containing the retained model and motions; that authorization does not replace underlying rightsholder grants.
+**Code is MIT; the character illustration is CC BY-NC-SA 4.0.**
 
-- Character: 上善无形 / 溟月; maid derivative: ZipZipPipe. Illustration-derived work: CC BY-NC-SA 4.0, attribution, noncommercial and ShareAlike.
+- Character: 上善无形 / 溟月; maid derivative: ZipZipPipe, from a public open character gallery. Illustration-derived work: CC BY-NC-SA 4.0 (attribution, noncommercial, ShareAlike).
+- Head: a substantial rebuild on an open-source base model; the original credit and bundled ReadMe are retained.
+- Motions: DLP3D / S-Lab NTU, converted to VRMA by Codemarchant / Rexclaw (MIT notices retained). They served as pressure-test and adaptation references; the shipped player keeps only upper-body and finger tracks.
 
-Check underlying terms before redistribution, commercial use or incorporation into another work. Independent community project, not an official DeepSeek product.
+Check each original license before redistribution, commercial use or incorporation into another work. Independent community project, not an official DeepSeek product.
 
 [Credits and licensing](docs/character-attribution.md) · [Renderer protocol](docs/renderer-protocol.md) · [Motion sources](docs/motion-sources.md)
 
