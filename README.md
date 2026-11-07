@@ -28,6 +28,16 @@ dsh --profile web --patch ./lumi.overlay.yml
 
 Replace `web` with your existing profile name if different. The plugin automatically serves the character on a loopback address and stops on DSH disposal.
 
+### From the plugin market
+
+Add this index under **Plugins → Discover → Add index source** (enable **Custom plugin index** under Experimental plugins first if the Discover tab is missing):
+
+```
+https://lazyalexander.github.io/dsh-plugin-lumi-avatar/index.json
+```
+
+Then install **Lumi Avatar** from the list. This is the same bundle as the Git install below, pinned to a released commit.
+
 ## Requirements and usage
 
 - DeepSeek Harness 0.2.2-rc.1; other versions unverified.

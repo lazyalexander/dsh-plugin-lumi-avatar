@@ -28,6 +28,16 @@ dsh --profile web --patch ./lumi.overlay.yml
 
 已有其他配置名时，将 `web` 换成你使用的名称。插件会在本机回环地址自动启动模型服务；退出 DSH 后停止。
 
+### 从插件市场安装
+
+在 DSH 的 **插件 → 发现 → 添加索引源** 里加入下面的地址（如果还没有「发现」标签，先在「实验性插件」里启用「自定义插件索引」）：
+
+```
+https://lazyalexander.github.io/dsh-plugin-lumi-avatar/index.json
+```
+
+然后在列表里安装 **Lumi 虚拟形象**。它和下面用 Git 安装的是同一个包，只是固定在已发布的提交上。
+
 ## 要求与使用
 
 - DeepSeek Harness 0.2.2-rc.1；其他版本待验证。
