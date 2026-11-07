@@ -43,8 +43,6 @@ dsh --profile web --patch ./lumi.overlay.yml
 **代码 MIT，整包不是统一 MIT。** 保留每项素材的原署名和许可。发布者已确认公开当前原版模型和动作，按非商用预览版分发；这不替代原权利人的授权。
 
 - 角色原型：上善无形「溟月」；女仆装二创：ZipZipPipe。[立绘来源](https://iphsiibl.github.io/deepseek-whale-girl-gallery/)；立绘衍生部分 CC BY-NC-SA 4.0，署名、非商用、衍生同协议。
-- 头部：Sour暄／幻象黑兔。提供者声明原分享协议 MIT，但对应文件尚未取得；随包原 ReadMe 的非商用及额外用途限制完整保留。两份授权记录尚未完全核对。
-- 动作：DLP3D／S-Lab NTU；VRMA 转换：Codemarchant／Rexclaw。代码仓库 MIT 通知保留；动作数据库逐素材再分发范围尚未独立核清。未包含《极乐净土》VMD 或音乐。
 
 进一步转载、商用或纳入其他作品前，请核对各自原许可。独立社区项目，非 DeepSeek 官方产品。
 
