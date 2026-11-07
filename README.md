@@ -4,6 +4,10 @@ MIT-licensed plugin code for context-aware avatar responses in DeepSeek Harness 
 
 [中文](docs/README.zh-CN.md) · [Renderer protocol](docs/renderer-protocol.md)
 
+## Mac app preview
+
+For a bundled app with the retained Lumi character, download the [Mac preview release](https://github.com/lazyalexander/dsh-plugin-lumi-avatar/releases/tag/companion-macos-0.3.7-preview) and follow the [中文安装说明](docs/install-macos.zh-CN.md). Apple Silicon only; no separate Node.js or DSH installation required. The app includes separately licensed character/motion assets; it is not entirely MIT and asset-rights review remains incomplete.
+
 ## Presentations
 
 | State | Intended expression and gesture |
