@@ -24,6 +24,7 @@ async function collect(directory = '.') {
     if (entry.isDirectory()) await collect(path);
     else {
       if (path === 'icon.png') { paths.push(path); continue; }
+      if (path.startsWith('market/') && /\.(?:png|jpe?g|webp|gif|avif)$/i.test(path)) { paths.push(path); continue; }
     if (path.startsWith('renderer/') && /\.(?:vrma|gz|png|jpe?g|wasm|txt)$/i.test(path)) { paths.push(path); continue; }
       const text = await readFile(path, 'utf8');
       for (const pattern of forbidden) assert.ok(!pattern.test(text), `Sensitive pattern in ${path}`);
