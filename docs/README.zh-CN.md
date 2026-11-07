@@ -61,3 +61,9 @@ The original model is stored losslessly compressed and decoded while serving. Gi
 Check underlying terms before redistribution, commercial use or incorporation into another work. Independent community project, not an official DeepSeek product.
 
 [完整声明 / Full notices](ASSET-NOTICES.txt) · [通信协议 / Renderer protocol](docs/renderer-protocol.md)
+
+## 验证 / Validation
+
+已在隔离的全新 web 配置执行上述 GitHub 命令安装并直接启动 DSH；无额外 overlay，侧栏自动出现。真实 DeepSeek 回复、张嘴和回复结束闭嘴通过。12 项本地测试通过，含模型解压一致性、路径隔离、打断和口型结束。当前实测平台为 Apple Silicon Mac；其他平台尚未实测。
+
+Verified installation from GitHub into a fresh isolated web profile, automatic sidebar activation without an extra overlay, and a real DeepSeek reply with mouth movement returning to zero. All 12 local tests passed, including lossless model serving, path isolation, interruption and playback completion. Tested on Apple Silicon Mac; other platforms remain unverified.

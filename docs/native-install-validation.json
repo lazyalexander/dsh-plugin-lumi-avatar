@@ -1,0 +1,18 @@
+{
+  "packageVersion": "0.4.0",
+  "installation": "dsh plugin --profile web add github:lazyalexander/dsh-plugin-lumi-avatar",
+  "isolatedProfile": true,
+  "extraOverlay": false,
+  "realDeepSeek": {
+    "errors": [],
+    "firstRun": true,
+    "mouth": 0.3497095780132658,
+    "end": {
+      "speech": false,
+      "mouth": 0
+    },
+    "pass": true
+  },
+  "unitTestsPassed": 12,
+  "platform": "macOS Apple Silicon"
+}
