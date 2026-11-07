@@ -1,234 +1,261 @@
 {
-  "joy": {
-    "label": "惊喜",
-    "meaning": "意外好消息带来的欣喜",
-    "seconds": 4.4,
-    "hold": 8,
-    "body": {
-      "source": "happy",
-      "gain": 0.46
-    },
-    "face": {
-      "happy": 0.62,
-      "SmileEyes": 0.1
-    },
-    "accent": {
-      "head": -0.025,
-      "chest": -0.02
-    },
-    "tilt": 0.035,
-    "sample": true,
-    "transition": {
-      "body": 0.45,
-      "face": 0.25
-    },
-    "timing": {
-      "attack": 0.24,
-      "release": 0.85
-    },
-    "facePulse": {
-      "SourMMD_08": 0.32
-    },
-    "pulseSeconds": 1.4
+ "joy": {
+  "label": "惊喜",
+  "meaning": "意外好消息带来的欣喜",
+  "seconds": 4.4,
+  "hold": 8,
+  "body": {
+   "source": "happy",
+   "gain": 0.46
   },
-  "anger": {
-    "label": "怒",
-    "meaning": "对不公或越界的克制不满，不攻击用户",
-    "seconds": 4.6,
-    "hold": 3,
-    "body": {
-      "source": "anger",
-      "start": 0,
-      "end": 4.2,
-      "gain": 0.95,
-      "fingerGain": 1.35
-    },
-    "face": {
-      "SourMMD_31": 0.78,
-      "SourMMD_19": 0.28,
-      "SourMMD_09": 0.12
-    },
-    "accent": {
-      "head": 0.015,
-      "chest": 0.01
-    },
-    "tilt": 0
+  "face": {
+   "happy": 0.62,
+   "SmileEyes": 0.1
   },
-  "sad": {
-    "label": "哀",
-    "meaning": "失落、难过或共情，避免萌化痛苦",
-    "seconds": 6.4,
-    "hold": 12,
-    "body": {
-      "source": "sad",
-      "gain": 0.36
-    },
-    "face": {
-      "SourMMD_25": 0.85,
-      "SourMMD_19": 0.9,
-      "SourMMD_09": 0.16
-    },
-    "accent": {
-      "head": 0.24,
-      "chest": 0.07
-    },
-    "tilt": 0
+  "accent": {
+   "head": -0.025,
+   "chest": -0.02
   },
-  "delight": {
-    "label": "乐",
-    "meaning": "平静、持续的愉悦与轻松陪伴，不是突然惊喜",
-    "seconds": 5.0,
-    "hold": 10,
-    "body": {
-      "source": "idle",
-      "gain": 0.15
-    },
-    "face": {
-      "happy": 0.42,
-      "SmileEyes": 0.36
-    },
-    "accent": {
-      "head": 0.015,
-      "chest": -0.012
-    },
-    "tilt": -0.04
+  "tilt": 0.035,
+  "sample": true,
+  "transition": {
+   "body": 0.45,
+   "face": 0.25
   },
-  "laugh": {
-    "label": "大笑",
-    "meaning": "确实被笑话或有趣情境逗笑的短暂反应",
-    "seconds": 4.8,
-    "hold": 0,
-    "body": {
-      "source": "laugh",
-      "gain": 0.52
-    },
-    "face": {
-      "happy": 0.9,
-      "SmileEyes": 0.78
-    },
-    "accent": {
-      "head": 0.025,
-      "chest": 0.035
-    },
-    "tilt": 0
+  "timing": {
+   "attack": 0.24,
+   "release": 0.85
   },
-  "cute": {
-    "label": "卖萌",
-    "meaning": "轻松情境下有意俏皮撒娇，不能替代认真回应",
-    "seconds": 4.4,
-    "hold": 3,
-    "body": {
-      "source": "cute",
-      "gain": 1.1,
-      "fingerGain": 1.35
-    },
-    "face": {
-      "happy": 0.52,
-      "SmileEyes": 0.16,
-      "SourMMD_28": 0.2
-    },
-    "accent": {
-      "head": 0.01,
-      "chest": 0
-    },
-    "tilt": 0.045,
-    "sample": true,
-    "transition": {
-      "body": 0.65,
-      "face": 0.4
-    },
-    "timing": {
-      "attack": 0.42,
-      "release": 0.9
-    }
+  "facePulse": {
+   "SourMMD_08": 0.32
   },
-  "explain": {
-    "label": "平静说明",
-    "meaning": "日常解释、步骤与平静交流",
-    "seconds": 5.6,
-    "hold": 3,
-    "sample": true,
-    "body": {
-      "source": "wave",
-      "gain": 0.5,
-      "oneHand": true,
-      "fingerGain": 0.9
-    },
-    "face": {
-      "happy": 0.2
-    },
-    "accent": {
-      "head": 0.015,
-      "chest": 0
-    },
-    "tilt": 0.03,
-    "transition": {
-      "body": 0.7,
-      "face": 0.45
-    },
-    "timing": {
-      "attack": 0.65,
-      "release": 1.0
-    }
+  "pulseSeconds": 1.4
+ },
+ "anger": {
+  "label": "怒",
+  "meaning": "对不公或越界的克制不满，不攻击用户",
+  "seconds": 4.6,
+  "hold": 3,
+  "body": {
+   "source": "anger",
+   "start": 0,
+   "end": 4.2,
+   "gain": 0.95,
+   "fingerGain": 1.35
   },
-  "serious": {
-    "label": "严肃说明",
-    "meaning": "重要事实、明确边界、认真纠错",
-    "seconds": 5.6,
-    "hold": 3,
-    "sample": true,
-    "body": {
-      "source": "listen",
-      "gain": 0.42
-    },
-    "face": {
-      "SourMMD_22": 0.78,
-      "SourMMD_19": 0.36
-    },
-    "accent": {
-      "head": 0.05,
-      "chest": 0.02
-    },
-    "tilt": 0,
-    "transition": {
-      "body": 0.6,
-      "face": 0.35
-    },
-    "timing": {
-      "attack": 0.5,
-      "release": 0.9
-    }
+  "face": {
+   "SourMMD_31": 0.78,
+   "SourMMD_19": 0.28,
+   "SourMMD_09": 0.12
   },
-  "surprise": {
-    "label": "吃惊",
-    "meaning": "意料之外、尚未判断好坏的短暂惊讶",
-    "seconds": 4.6,
-    "hold": 1,
-    "sample": true,
-    "body": {
-      "source": "surprise",
-      "gain": 0.58,
-      "start": 0,
-      "end": 4.3,
-      "fingerGain": 0.85
-    },
-    "face": {
-      "SourMMD_08": 0.72,
-      "SourMMD_25": 0.15,
-      "oh": 0.12
-    },
-    "accent": {
-      "head": -0.015,
-      "chest": -0.01
-    },
-    "tilt": 0,
-    "transition": {
-      "body": 0.25,
-      "face": 0.16
-    },
-    "timing": {
-      "attack": 0.18,
-      "release": 1.1
-    }
+  "accent": {
+   "head": 0.015,
+   "chest": 0.01
+  },
+  "tilt": 0
+ },
+ "sad": {
+  "label": "哀",
+  "meaning": "失落、难过或共情，避免萌化痛苦",
+  "seconds": 6.4,
+  "hold": 12,
+  "body": {
+   "source": "sad",
+   "gain": 0.36
+  },
+  "face": {
+   "SourMMD_25": 0.85,
+   "SourMMD_19": 0.9,
+   "SourMMD_09": 0.16
+  },
+  "accent": {
+   "head": 0.24,
+   "chest": 0.07
+  },
+  "tilt": 0
+ },
+ "delight": {
+  "label": "乐",
+  "meaning": "平静、持续的愉悦与轻松陪伴，不是突然惊喜",
+  "seconds": 5.0,
+  "hold": 10,
+  "body": {
+   "source": "idle",
+   "gain": 0.15
+  },
+  "face": {
+   "happy": 0.42,
+   "SmileEyes": 0.36
+  },
+  "accent": {
+   "head": 0.015,
+   "chest": -0.012
+  },
+  "tilt": -0.04
+ },
+ "laugh": {
+  "label": "大笑",
+  "meaning": "确实被笑话或有趣情境逗笑的短暂反应",
+  "seconds": 4.8,
+  "hold": 0,
+  "body": {
+   "source": "laugh",
+   "gain": 0.52
+  },
+  "face": {
+   "happy": 0.9,
+   "SmileEyes": 0.78
+  },
+  "accent": {
+   "head": 0.025,
+   "chest": 0.035
+  },
+  "tilt": 0
+ },
+ "cute": {
+  "label": "卖萌",
+  "meaning": "轻松情境下有意俏皮撒娇，不能替代认真回应",
+  "seconds": 4.4,
+  "hold": 3,
+  "body": {
+   "source": "cute",
+   "gain": 1.1,
+   "fingerGain": 1.35
+  },
+  "face": {
+   "happy": 0.52,
+   "SmileEyes": 0.16,
+   "SourMMD_28": 0.2
+  },
+  "accent": {
+   "head": 0.01,
+   "chest": 0
+  },
+  "tilt": 0.045,
+  "sample": true,
+  "transition": {
+   "body": 0.65,
+   "face": 0.4
+  },
+  "timing": {
+   "attack": 0.42,
+   "release": 0.9
   }
+ },
+ "explain": {
+  "label": "平静说明",
+  "meaning": "日常解释、步骤与平静交流",
+  "seconds": 5.6,
+  "hold": 3,
+  "sample": true,
+  "body": {
+   "source": "wave",
+   "gain": 0.5,
+   "oneHand": true,
+   "fingerGain": 0.9
+  },
+  "face": {
+   "happy": 0.2
+  },
+  "accent": {
+   "head": 0.015,
+   "chest": 0
+  },
+  "tilt": 0.03,
+  "transition": {
+   "body": 0.7,
+   "face": 0.45
+  },
+  "timing": {
+   "attack": 0.65,
+   "release": 1.0
+  }
+ },
+ "serious": {
+  "label": "严肃说明",
+  "meaning": "重要事实、明确边界、认真纠错",
+  "seconds": 5.6,
+  "hold": 3,
+  "sample": true,
+  "body": {
+   "source": "listen",
+   "gain": 0.42
+  },
+  "face": {
+   "SourMMD_22": 0.78,
+   "SourMMD_19": 0.36
+  },
+  "accent": {
+   "head": 0.05,
+   "chest": 0.02
+  },
+  "tilt": 0,
+  "transition": {
+   "body": 0.6,
+   "face": 0.35
+  },
+  "timing": {
+   "attack": 0.5,
+   "release": 0.9
+  }
+ },
+ "surprise": {
+  "label": "吃惊",
+  "meaning": "意料之外、尚未判断好坏的短暂惊讶",
+  "seconds": 4.6,
+  "hold": 1,
+  "sample": true,
+  "body": {
+   "source": "surprise",
+   "gain": 0.58,
+   "start": 0,
+   "end": 4.3,
+   "fingerGain": 0.85
+  },
+  "face": {
+   "SourMMD_08": 0.72,
+   "SourMMD_25": 0.15,
+   "oh": 0.12
+  },
+  "accent": {
+   "head": -0.015,
+   "chest": -0.01
+  },
+  "tilt": 0,
+  "transition": {
+   "body": 0.25,
+   "face": 0.16
+  },
+  "timing": {
+   "attack": 0.18,
+   "release": 1.1
+  }
+ },
+ "thinking": {
+  "label": "思考中",
+  "meaning": "模型正在思考或调用工具",
+  "seconds": 6,
+  "hold": 3,
+  "sample": false,
+  "body": {
+   "source": "listen",
+   "gain": 0.5
+  },
+  "face": {
+   "SourMMD_22": 0.18
+  },
+  "accent": {
+   "head": 0.02,
+   "chest": 0.01
+  },
+  "tilt": 0.1,
+  "transition": {
+   "body": 0.55,
+   "face": 0.45
+  },
+  "timing": {
+   "attack": 0.5,
+   "release": 0.8
+  }
+ }
 }

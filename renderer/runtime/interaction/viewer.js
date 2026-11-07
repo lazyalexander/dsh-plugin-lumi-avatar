@@ -33,6 +33,7 @@ if (embedded) {
 }
 const source = new URLSearchParams(location.search).get('model') || '/assets/Lumi.vrm';
 const status = document.querySelector('#status');
+const thinkingBubble = document.querySelector('#thinking');
 const render = () => {
   scene.updateMatrixWorld(true);
   renderer.render(scene, camera);
@@ -70,7 +71,7 @@ function reset() {
   return actor.snapshot();
 }
 const replies = { joy: '哇，居然成功了！这真是个惊喜。', surprise: '诶？怎么突然变成这样了？让我确认一下。', anger: '这样不公平，我觉得应该认真说清楚。', delight: '这样慢慢聊着，就觉得很舒服呢。', cute: '嘿嘿，今天也想要一点点夸奖呀。', smile: '你回来啦，见到你真好。', explain: '我慢慢说，我们先从第一步开始。', serious: '这件事要认真说清楚，我会把事实和猜测分开。', anxious: '哎呀，怎么还差一点点！快一点，再快一点。', embarrassed: '唔，是我说错了，对不起。我这次记清楚了。', happy: '真好，听到这个我很开心。', sad: '有点难过，想安静一会儿。', guilty: '对不起，我会认真改好的。', laugh: '噗，怎么会这样啦，真的被你逗笑了。', nod: '嗯，我在听。', wave: '嗨，见到你真好。', listen: '我在，继续说吧。', talk: '让我想想，慢慢和你说。', idle: '好呀。' };
-const sceneLabels = { ...Object.fromEntries(Object.entries(EMOTION_PROFILES).map(([k, p]) => [k, p.label])), idle: '安静待机', smile: '微笑', explain: '平静说明', serious: '严肃说明', anxious: '着急', embarrassed: '不好意思', happy: '开心', sad: '哀', guilty: '愧疚', laugh: '大笑', nod: '轻轻点头', wave: '挥手', listen: '倾听', talk: '说话' };
+const sceneLabels = { thinking: '思考中', ...Object.fromEntries(Object.entries(EMOTION_PROFILES).map(([k, p]) => [k, p.label])), idle: '安静待机', smile: '微笑', explain: '平静说明', serious: '严肃说明', anxious: '着急', embarrassed: '不好意思', happy: '开心', sad: '哀', guilty: '愧疚', laugh: '大笑', nod: '轻轻点头', wave: '挥手', listen: '倾听', talk: '说话' };
 function trigger(name, intensity = 0.65) {
   const turn = `local-${++sequence}`;
   director.beginTurn(turn, clock);
@@ -81,11 +82,25 @@ function trigger(name, intensity = 0.65) {
   status.textContent = sceneLabels[name] || '和你聊天';
   return { command, receipt };
 }
+function placeThinking(state) {
+  if (!thinkingBubble) return;
+  const waiting = state?.state === 'waiting';
+  thinkingBubble.hidden = !waiting;
+  if (!waiting || !vrm) return;
+  const head = vrm.humanoid.getRawBoneNode('head');
+  if (!head) { thinkingBubble.hidden = true; return; }
+  const anchor = head.getWorldPosition(new THREE.Vector3());
+  anchor.y += 0.26; anchor.x += 0.13;
+  const point = anchor.project(camera);
+  thinkingBubble.style.left = `${(point.x * 0.5 + 0.5) * stage.clientWidth + 6}px`;
+  thinkingBubble.style.top = `${(-point.y * 0.5 + 0.5) * stage.clientHeight - 14}px`;
+}
 function step(time, draw = true) {
   if (time < clock) throw Error('Use reset before seeking backwards');
   while (clock + 1e-8 < time) { clock = Math.min(time, clock + 1 / 60); actor.update(clock, 1 / 60, director.sample(clock)); }
   const state = actor.snapshot();
-  status.textContent = state.state === 'waiting' ? '正在听你说' : state.speech?.active && state.gesture === 'idle' ? '和你说话' : sceneLabels[state.gesture];
+  status.textContent = state.state === 'waiting' ? '正在思考…' : state.speech?.active && state.gesture === 'idle' ? '和你说话' : sceneLabels[state.gesture];
+  placeThinking(state);
   document.querySelectorAll('[data-gesture]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.gesture === state.gesture)));
   if (draw) render(); return state;
 }

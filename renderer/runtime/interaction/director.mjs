@@ -60,7 +60,8 @@ export class AvatarDirector {
     }
     if (!this.active) {
       const mood = this.mood && now < this.mood.until ? this.mood : null;
-      return { gesture: this.waitingUntil === null ? 'idle' : 'listen', amount: this.waitingUntil === null ? 0 : 0.35, phase: now, emotion: mood?.name || 'neutral', emotionIntensity: mood ? mood.intensity * ease((mood.until - now) / 4) : 0, state: this.waitingUntil === null ? 'idle' : 'waiting', speech };
+      const waiting = this.waitingUntil !== null;
+      return { gesture: waiting ? 'thinking' : 'idle', amount: waiting ? 0.55 : 0, phase: now, emotion: mood?.name || (waiting ? 'thinking' : 'neutral'), emotionIntensity: mood ? mood.intensity * ease((mood.until - now) / 4) : (waiting ? 0.6 : 0), state: waiting ? 'waiting' : 'idle', speech };
     }
     const { command, start, duration } = this.active, phase = Math.max(0, now - start);
     const timing = EMOTION_PROFILES[command.gesture.name]?.timing;

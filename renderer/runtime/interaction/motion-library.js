@@ -91,6 +91,12 @@ export class MotionLibrary {
     if (accents) for (const [bone, value] of Object.entries(accents)) reference.get(bone).multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), a * value));
     const tilt = emotion ? emotion.tilt : { smile: 0.055, embarrassed: -0.045, anxious: 0.025 * Math.sin(p * 7) }[state.gesture];
     if (tilt) reference.get('head').multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 0, 1), a * tilt));
+    if (state.gesture === 'thinking') {
+      const sway = Math.sin(state.phase * 1.25);
+      reference.get('head').multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 0, 1), a * 0.07 * sway));
+      reference.get('head').multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), a * 0.04 * Math.sin(state.phase * 1.9)));
+      reference.get('chest').multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 0, 1), a * 0.012 * sway));
+    }
     return reference;
   }
   metadata() { return Object.fromEntries([...this.clips].map(([name, clip]) => [name, { seconds: clip.duration, boneTracks: clip.tracks.size }])); }
