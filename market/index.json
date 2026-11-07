@@ -52,7 +52,7 @@
           "source": {
             "type": "git",
             "url": "https://github.com/lazyalexander/dsh-plugin-lumi-avatar",
-            "commit": "84a008090762489958235a835b5b69407ec1cb90"
+            "commit": "05ad638a4ac93efeb02388fe24b6ab02c814404c"
           }
         },
         {
