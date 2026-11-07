@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-lumi-avatar",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Context-aware emotional avatar presentation for DeepSeek Harness",
   "type": "module",
   "license": "SEE LICENSE IN ASSET-NOTICES.txt",
@@ -32,6 +32,7 @@
     "./package.json": "./package.json"
   },
   "files": [
+    "icon.png",
     "src/",
     "lib/",
     "lumi.overlay.yml",
@@ -72,5 +73,6 @@
     "prepack": "npm run build",
     "check:release": "node scripts/check-release.mjs",
     "check:docs": "node scripts/check-doc-links.mjs"
-  }
+  },
+  "icon": "./icon.png"
 }
