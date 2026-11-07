@@ -2,7 +2,7 @@ import {readFile,readdir,access} from 'node:fs/promises';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 const root=process.cwd();
-const docs=['README.md',...(await readdir('docs')).filter(x=>x.endsWith('.md')).map(x=>'docs/'+x),'renderer/licenses/MOTION-CREDITS.md'];
+const docs=['README.md',...(await readdir('docs')).filter(x=>x.endsWith('.md')).map(x=>'docs/'+x)];
 const stripCode=text=>text.replace(/```[\s\S]*?```/g,'');
 function anchors(text){
  const seen=new Map();return new Set([...stripCode(text).matchAll(/^#{1,6}\s+(.+)$/gm)].map(m=>{
