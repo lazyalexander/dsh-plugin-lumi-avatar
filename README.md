@@ -43,8 +43,6 @@ The original model is stored losslessly compressed and decoded while serving. Gi
 **Code is MIT; the complete package is not uniformly MIT.** Original asset credits and licenses are retained. The provider explicitly authorized this noncommercial preview containing the retained model and motions; that authorization does not replace underlying rightsholder grants.
 
 - Character: 上善无形 / 溟月; maid derivative: ZipZipPipe. Illustration-derived work: CC BY-NC-SA 4.0, attribution, noncommercial and ShareAlike.
-- Head: Sour暄 / 幻象黑兔. The provider reports MIT sharing terms, but the corresponding file has not been obtained. Original ReadMe with noncommercial and additional use restrictions is retained; these records have not been fully reconciled.
-- Motions: DLP3D / S-Lab NTU, VRMA conversion by Codemarchant / Rexclaw. Repository MIT notices retained; per-asset motion redistribution scope has not been independently established. No Gokuraku Jodo VMD or music included.
 
 Check underlying terms before redistribution, commercial use or incorporation into another work. Independent community project, not an official DeepSeek product.
 
