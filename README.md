@@ -54,11 +54,11 @@ The original model is stored losslessly compressed and decoded while serving. Gi
 
 - Character: 上善无形 / 溟月; maid derivative: ZipZipPipe, from a public open character gallery. Illustration-derived work: CC BY-NC-SA 4.0 (attribution, noncommercial, ShareAlike).
 - Head: a substantial rebuild on an open-source base model; the original credit and bundled ReadMe are retained.
-- Motions: DLP3D / S-Lab NTU, converted to VRMA by Codemarchant / Rexclaw (MIT notices retained). They served as pressure-test and adaptation references; the shipped player keeps only upper-body and finger tracks.
+- Motions: the project's own ten standing-interaction clips, played as upper-body and finger tracks over local standing support. No third-party motion captures are included.
 
 Check each original license before redistribution, commercial use or incorporation into another work. Independent community project, not an official DeepSeek product.
 
-[Credits and licensing](docs/character-attribution.md) · [Renderer protocol](docs/renderer-protocol.md) · [Motion sources](docs/motion-sources.md)
+[Credits and licensing](docs/character-attribution.md) · [Renderer protocol](docs/renderer-protocol.md) · [Motion design](docs/motion-sources.md)
 
 ## Validation
 

@@ -18,7 +18,7 @@ Original credit: Sour暄 / 幻象黑兔, Sour式空_夏卉 FA361. The [original 
 
 ## Motions
 
-During development the DLP3D / S-Lab NTU motions served as pressure-test and adaptation references. The shipped player keeps only upper-body and finger tracks, with local standing support controlling feet and pelvis, so playback is not the original full-body capture. VRMA conversion by Codemarchant / Rexclaw; both repository MIT notices are retained. See [motion sources](motion-sources.md). Gokuraku Jodo VMD and music are not distributed.
+The ten clips are part of this project's own motion set. The shipped player keeps upper-body and finger tracks, with local standing support controlling feet and pelvis, so playback is a standing interaction rather than a full-body recording. See [motion design](motion-sources.md). No third-party motion captures, Gokuraku Jodo VMD or music are distributed.
 
 ## Publication and code
 

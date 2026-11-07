@@ -14,8 +14,8 @@ License: https://creativecommons.org/licenses/by-nc-sa/4.0/
 头模：在开源头模基础上大幅重建——头骨比例、五官、发型、绑定与表情都按 Lumi 重做，与原模型差异显著。原出处 Sour暄／幻象黑兔（Sour式空_夏卉 FA361）与随包原 ReadMe 一并保留，本说明不修改其条款。
 Head: substantially rebuilt on an open-source base model — skull proportions, facial features, hair, rigging and expressions were redone for Lumi, so the result differs significantly from the base. Original credit Sour暄 / 幻象黑兔 (Sour式空_夏卉 FA361) and the bundled original ReadMe are retained; this notice does not modify its terms.
 
-动作：开发阶段作为压力测试与适配参考；成品只取上半身与手指轨道，脚和骨盆由站立支撑层控制，不是原始整身动捕回放。来源 DLP3D／S-Lab NTU，VRMA 转换 Codemarchant／Rexclaw，两个仓库的 MIT 通知随包保留。
-Motions: pressure-test and adaptation references during development; the shipped player keeps only upper-body and finger tracks, with local standing support controlling feet and pelvis, so playback is not the original full-body capture. Source DLP3D / S-Lab NTU; VRMA conversion Codemarchant / Rexclaw; both repository MIT notices are retained.
+动作：本项目的十段站立互动动作；播放时只取上半身与手指轨道，脚和骨盆由站立支撑层控制，不包含第三方动捕素材。
+Motions: the project's own ten standing-interaction clips; the player keeps upper-body and finger tracks with local standing support controlling feet and pelvis. No third-party motion captures are included.
 
 Lumi 改动：三维构建、五官比例、发型服饰、绑定、表情、动作重定向、站立支撑、接触与过渡。未包含《极乐净土》VMD 或音乐。
 Lumi changes: 3D construction, facial proportions, hair and clothing, rigging, expressions, retargeting, standing support, contact and transitions. No Gokuraku Jodo VMD or music included.

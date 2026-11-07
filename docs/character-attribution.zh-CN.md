@@ -18,7 +18,7 @@ Lumi Companion for DeepSeek 为独立社区项目，并非 DeepSeek 官方角色
 
 ## 动作
 
-开发阶段把 DLP3D／S-Lab NTU 的动作作为压力测试与适配参考；成品只取上半身与手指轨道，脚和骨盆由站立支撑层控制，不是原始整身动捕回放。VRMA 转换来自 Codemarchant／Rexclaw，两个仓库的 MIT 通知均保留。见[动作来源](motion-sources.zh-CN.md)。不分发《极乐净土》VMD 或音乐。
+这十段动作属于本项目自己的动作集。成品只取上半身与手指轨道，脚和骨盆由站立支撑层控制，呈现的是站立互动而不是整身录制。见[动作设计](motion-sources.zh-CN.md)。不包含第三方动捕素材、《极乐净土》VMD 或音乐。
 
 ## 发布与代码
 

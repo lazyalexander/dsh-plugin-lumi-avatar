@@ -54,11 +54,11 @@ https://lazyalexander.github.io/dsh-plugin-lumi-avatar/index.json
 
 - 角色原型：上善无形「溟月」；女仆装二创：ZipZipPipe，来自公开的开源角色图集。[立绘来源](https://iphsiibl.github.io/deepseek-whale-girl-gallery/)；立绘衍生部分 CC BY-NC-SA 4.0，署名、非商用、衍生同协议。
 - 头模：在开源头模基础上大幅重建，原出处署名与随包原 ReadMe 保留。
-- 动作：DLP3D／S-Lab NTU，Codemarchant／Rexclaw 转为 VRMA（MIT 通知保留）；开发阶段作为压测与适配参考，成品只取上半身与手指轨道。
+- 动作：本项目自己的十段站立互动动作，播放时取上半身与手指轨道，配合本地站立支撑。不包含第三方动捕素材。
 
 进一步转载、商用或纳入其他作品前，请核对各自原许可。独立社区项目，非 DeepSeek 官方产品。
 
-[署名与许可](character-attribution.zh-CN.md) · [通信协议](renderer-protocol.zh-CN.md) · [动作来源](motion-sources.zh-CN.md)
+[署名与许可](character-attribution.zh-CN.md) · [通信协议](renderer-protocol.zh-CN.md) · [动作设计](motion-sources.zh-CN.md)
 
 ## 验证
 
