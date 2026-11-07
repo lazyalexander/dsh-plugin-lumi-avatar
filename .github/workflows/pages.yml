@@ -1,0 +1,37 @@
+# Publishes the plugin market index (format 1) that DSH reads from
+# "Plugins → Discover → Add index source".
+# Site root is market/, so the index URL is:
+#   https://lazyalexander.github.io/dsh-plugin-lumi-avatar/index.json
+name: Publish plugin market index
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'market/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: market
+      - id: deployment
+        uses: actions/deploy-pages@v4

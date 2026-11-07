@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "title": {
+    "en": "Lumi Plugins",
+    "zh": "Lumi 插件源"
+  },
+  "description": {
+    "en": "DeepSeek Harness plugins by lazyalexander",
+    "zh": "lazyalexander 维护的 DeepSeek Harness 插件"
+  },
+  "metadata": {
+    "categories": {
+      "interface": {
+        "title": {
+          "en": "Interface",
+          "zh": "界面"
+        }
+      }
+    }
+  },
+  "plugins": [
+    {
+      "name": "dsh-plugin-lumi-avatar",
+      "title": {
+        "en": "Lumi Avatar",
+        "zh": "Lumi 虚拟形象"
+      },
+      "description": {
+        "en": "Context-aware Lumi avatar in the conversation page: expressions, motions, and text-paced mouth animation with a bundled WebGL renderer. Noncommercial preview.",
+        "zh": "出现在对话页的 Lumi 虚拟形象：表情、动作与随文本节奏的口型动画，内置 WebGL 渲染器。非商用预览版。"
+      },
+      "icon": "./icon.svg",
+      "author": "lazyalexander",
+      "homepage": "https://github.com/lazyalexander/dsh-plugin-lumi-avatar#readme",
+      "repository": {
+        "url": "https://github.com/lazyalexander/dsh-plugin-lumi-avatar"
+      },
+      "metadata": {
+        "category": "interface",
+        "keywords": [
+          "avatar",
+          "vrm",
+          "emotion",
+          "companion",
+          "webgl"
+        ]
+      },
+      "versions": [
+        {
+          "version": "0.4.0",
+          "publishTimestamp": 1794023038,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/lazyalexander/dsh-plugin-lumi-avatar",
+            "commit": "97738c63781ad5975a9275e1fddaa47b80836b9f"
+          }
+        }
+      ]
+    }
+  ]
+}
