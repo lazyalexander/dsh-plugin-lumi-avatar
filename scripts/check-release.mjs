@@ -12,7 +12,7 @@ const forbidden = [
   /Bearer\s+[A-Za-z0-9_.-]{20,}/,
 ];
 const allowedRoots = new Set(['src', 'lib', 'docs', 'test', 'scripts', '.github', 'renderer', 'market']);
-const allowedFiles = new Set(['ASSET-NOTICES.txt', 'LICENSE', 'README.md', 'package.json', 'package-lock.json', 'build.mjs', 'lumi.overlay.yml', '.gitignore']);
+const allowedFiles = new Set(['ASSET-NOTICES.txt', 'LICENSE', 'README.md', 'package.json', 'package-lock.json', 'build.mjs', 'lumi.overlay.yml', '.gitignore', 'icon.png']);
 const paths = [];
 async function collect(directory = '.') {
   for (const entry of await readdir(directory, { withFileTypes: true })) {
@@ -23,7 +23,8 @@ async function collect(directory = '.') {
     assert.ok(!entry.isSymbolicLink(), `Symlink excluded from release: ${path}`);
     if (entry.isDirectory()) await collect(path);
     else {
-      if (path.startsWith('renderer/') && /\.(?:vrma|gz|png|jpe?g|wasm|txt)$/i.test(path)) { paths.push(path); continue; }
+      if (path === 'icon.png') { paths.push(path); continue; }
+    if (path.startsWith('renderer/') && /\.(?:vrma|gz|png|jpe?g|wasm|txt)$/i.test(path)) { paths.push(path); continue; }
       const text = await readFile(path, 'utf8');
       for (const pattern of forbidden) assert.ok(!pattern.test(text), `Sensitive pattern in ${path}`);
       assert.ok(!/\.(?:vrm|vrma|vmd|pmx|blend|png|jpe?g|mp4|webm|zip|tgz|db)$/i.test(path), `Asset or archive in release: ${path}`);
