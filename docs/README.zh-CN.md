@@ -65,3 +65,5 @@ https://lazyalexander.github.io/dsh-plugin-lumi-avatar/index.json
 已在隔离的全新 web 配置执行上述 GitHub 命令安装并直接启动 DSH；无额外 overlay，侧栏自动出现。真实 DeepSeek 回复、张嘴和回复结束闭嘴通过。12 项本地测试通过，含模型解压一致性、路径隔离、打断和口型结束。当前实测平台为 Apple Silicon Mac；其他平台尚未实测。
 
 [文档索引](index.zh-CN.md) · [独立 Mac 应用（另一种安装方式）](install-macos.zh-CN.md)
+
+[素材来源与授权状态](character-attribution.zh-CN.md)

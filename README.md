@@ -65,3 +65,5 @@ Check each original license before redistribution, commercial use or incorporati
 Verified installation from GitHub into a fresh isolated web profile, automatic sidebar activation without an extra overlay, and a real DeepSeek reply with mouth movement returning to zero. All 12 local tests passed, including lossless model serving, path isolation, interruption and playback completion. Tested on Apple Silicon Mac; other platforms remain unverified.
 
 [Documentation index](docs/index.md) · [Standalone Mac app (alternative installation)](docs/install-macos.md)
+
+[Asset provenance and licensing status](docs/character-attribution.md)
